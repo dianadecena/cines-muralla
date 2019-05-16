@@ -8,19 +8,26 @@ html(lang="en")
     link(rel="stylesheet", href="./dist/main.css")
     title #{title} | #{h.siteTitle}
   body
-    // Header
-    header
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        a.navbar-brand(href="#") Navbar
-        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
-          span.navbar-toggler-icon
-
-        .collapse.navbar-collapse#navbarSupportedContent
-          ul.navbar-nav.mr-auto
-            li.nav-item.active
-              a.nav-link(href="#") Home <span class="sr-only">(current)</span>
-            li.nav-item
-              a.nav-link(href="#") Link
+    .wrapper
+      .logo cines muralla
+      .nav
+        ul
+          li Home
+          li Sedes
+          li Salas
+          li Contacto
+      .social-media
+        ul
+          li
+            i.fa.fa-facebook(aria-hidden='true')
+          li
+            i.fa.fa-instagram(aria-hidden='true')
+          li
+            i.fa.fa-twitter(aria-hidden='true')
+      .header
+        h1 Cines Muralla.
+        p experimenta el cine en su máxima expresión 
+        button.login LOGIN
     // Main Content
     main
       block content
