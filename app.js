@@ -1,8 +1,3 @@
-/**
- * Esta Configuracion fue realizada por Jose Roberto Quevedo (https://github.com/zoomelectrico)
- * Basado en los archivos de Wes Bos (https://github.com/wesbos)
- */
-// Importamos Todas Nuestras Dependencias
 const express = require("express");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -14,10 +9,11 @@ const promisify = require("es6-promisify").promisify;
 const flash = require("connect-flash");
 const expressValidator = require("express-validator");
 const sequelize = require("./config/database");
-const routes = require("./routes/index");
 const helpers = require("./helpers");
 const errorHandlers = require("./handlers/errorHandlers");
 require("./config/passport");
+const routeIndex = require("./routes/index");
+const routePelicula = require('./routes/pelicula');
 
 // Creamos La aplicacion en Express
 const app = express();
@@ -79,7 +75,8 @@ app.use((req, res, next) => {
 });
 
 // Configuracion de las rutas
-app.use("/", routes);
+app.use("/", routeIndex);
+app.use('/pelicula', routePelicula);
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);
