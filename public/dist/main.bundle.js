@@ -107,9 +107,9 @@ console.log("Hello World");
   !*** ./public/sass/styles.scss ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-// extracted by mini-css-extract-plugin
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleParseError: Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type.\n(Source code omitted for this binary file)\n    at handleParseError (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\webpack\\lib\\NormalModule.js:447:19)\n    at doBuild.err (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\webpack\\lib\\NormalModule.js:481:5)\n    at runLoaders (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\webpack\\lib\\NormalModule.js:342:12)\n    at C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\loader-runner\\lib\\LoaderRunner.js:373:3\n    at iterateNormalLoaders (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\loader-runner\\lib\\LoaderRunner.js:214:10)\n    at Array.<anonymous> (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\loader-runner\\lib\\LoaderRunner.js:205:4)\n    at Storage.finished (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:43:16)\n    at provider (C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:79:9)\n    at C:\\Users\\miriarte\\Desktop\\CinesMuralla\\CinesMuralla\\node_modules\\graceful-fs\\graceful-fs.js:90:16\n    at FSReqWrap.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:53:3)");
 
 /***/ })
 

@@ -15,4 +15,9 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/agregarp/', (req, res) => {
+    var agregarPelicula = true;
+    res.render('pelicula', {agregarPelicula});
+});
+
 module.exports = router;

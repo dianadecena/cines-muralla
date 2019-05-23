@@ -20,4 +20,22 @@ controller.getPeliculas = async function (callback){
     }
 }
 
+// crear una película
+controller.createPelicula = async function (data, callback) {
+    console.log(data);
+    try {
+        let response = await Pelicula.create({
+            titulo: data.titulo,
+            fecha_estreno: data.fecha_estreno,
+            descripcion: data.descripcion,
+            duracion: data.duracion,
+            censura: data.censura
+        });
+        
+        callback(null);
+    } catch (error) {
+        callback(error);
+    }
+}
+
 module.exports = controller;

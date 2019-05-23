@@ -2,25 +2,34 @@ extends layout
 
 block content
 
-  .container.mt-5
+  
+  .contenedor
     .row
       .col-md-7
-        h1 peliculas
-            table.table.table-bordered.table-hover
-              thead
-                tr
-                  td ID
-                  td Título
-                  td Fecha de estreno
-                  td Descripción
-                  td Duración
-                  td Censura
-              tbody
-              - for (var i = 0; i < peliculas.length; i++)
-                tr
-                  td #{peliculas[i].id_pelicula}
-                  td #{peliculas[i].titulo}
-                  td #{peliculas[i].fecha_estreno}
-                  td #{peliculas[i].descripcion}
-                  td #{peliculas[i].duracion}
-                  td #{peliculas[i].censura}
+        - if (!agregarPelicula)
+          table
+            thead
+              tr
+                th ID
+                th Título
+                th Fecha de estreno
+                th Descripción
+                th Duración
+                th Censura
+                th Editar
+                th Eliminar
+            tbody
+            - for (var i = 0; i < peliculas.length; i++)
+              tr
+                td #{peliculas[i].id_pelicula}
+                td #{peliculas[i].titulo}
+                td #{peliculas[i].fecha_estreno}
+                td #{peliculas[i].descripcion}
+                td #{peliculas[i].duracion}
+                td #{peliculas[i].censura}
+                td X
+                td X
+          a#button.agregar(href='/agregarp/') AGREGAR PELÍCULA
+          button#boton.agregar AGREGAR PELÍCULA
+        - if (agregarPelicula)
+          h1 it works
