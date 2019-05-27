@@ -15,9 +15,80 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/agregarp/', (req, res) => {
-    var agregarPelicula = true;
-    res.render('pelicula', {agregarPelicula});
+router.post('/create', (req, res) => {
+    console.log(req.body);
+    if(req.body){
+        peliculaController.createPelicula( req.body, (err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: `Fallo al crear la película`
+                })
+            console.log(err);
+            }else{
+                res.redirect('/pelicula');
+            }
+        })
+    }
 });
+
+router.post('/delete/:id', (req, res) => {
+    console.log(req.params.id)
+    if(req.params.id){
+        peliculaController.deletePelicula(req.params.id, (err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: `Fallo al eliminar la película`
+                })
+            console.log(err);
+            }else{
+                res.redirect('/pelicula');
+            }
+        })
+    }
+});
+
+router.get('/update/:id', (req, res) => {
+    console.log(req.params.id)
+    if(req.params.id){
+        peliculaController.getPelicula(req.params.id, (pelicula, err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: 'Fallo al buscar la película'
+                })
+            }else{
+                peliculaController.getPeliculas((peliculas, err) => {
+                    if(err){
+                        res.json({
+                            success: false,
+                            msg: 'Fallo al obtener peliculas'
+                        });
+                    }else{
+                        res.render('pelicula', {peliculas, pelicula});
+                    }
+                });
+            }
+        });
+    }
+});
+
+router.post('/update/:id', (req, res) => {
+    if(req.params.id){
+        peliculaController.updatePelicula(req.body, req.params.id, (err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: `Fallo al modificar la película ${req.params.id}`
+                })
+            }else{
+                res.redirect('/pelicula');
+            }
+        })
+    }
+});
+
+router.get('/pelicula/:id');
 
 module.exports = router;

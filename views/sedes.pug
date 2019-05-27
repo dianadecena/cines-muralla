@@ -2,3 +2,30 @@ extends layout
 
 block content
 
+  
+  .contenedor
+    .row
+      .col-md-7
+        - if (!agregarPelicula)
+          table#sedes
+            thead
+              tr
+                th ID
+                th Ubicación
+                th Nombre Fiscal
+                th Horario de llegada
+                th Horario de salida
+                th Cantidad de salas
+                th Editar
+                th Eliminar
+            tbody
+            - for (var i = 0; i < sedes.length; i++)
+              tr
+                td #{sedes[i].id_sede}
+                td #{sedes[i].ubicacion}
+                td #{sedes[i].nombre_fiscal}
+                td #{sedes[i].horario_llegada}
+                td #{sedes[i].horario_salida}
+                td #{sedes[i].cant_salas}
+                td X
+                td X

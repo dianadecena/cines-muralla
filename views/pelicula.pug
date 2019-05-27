@@ -2,11 +2,29 @@ extends layout
 
 block content
 
-  
-  .contenedor
+  - if (peliculas && !pelicula) 
     .row
-      .col-md-7
-        - if (!agregarPelicula)
+      .col-6
+        form(action='/pelicula/create' method="POST")
+          .form-group
+            label(for='titulo') 
+            input#titulo.form-control(type='text' placeholder='titulo'  name='titulo' required)
+          .form-group
+            label(for='fecha_estreno') 
+            input#fechaestreno.form-control(type='text' placeholder='fecha de estreno'  name='fecha_estreno' required)
+          .form-group
+            label(for='descripcion') 
+            input#descripcion.form-control(type='text' placeholder='descripcion'  name='descripcion' required)
+          .form-group
+            label(for='duracion') 
+            input#descripcion.form-control(type='text' placeholder='duracion'  name='duracion' required)
+          .form-group
+            label(for='censura') 
+            input#censura.form-control(type='text' placeholder='censura'  name='censura' required)
+          button#boton.agregar(type="submit") AGREGAR PELÍCULA
+      .contenedor#contenedor
+        .col-6
+        - if (peliculas)
           table
             thead
               tr
@@ -27,9 +45,32 @@ block content
                 td #{peliculas[i].descripcion}
                 td #{peliculas[i].duracion}
                 td #{peliculas[i].censura}
-                td X
-                td X
-          a#button.agregar(href='/agregarp/') AGREGAR PELÍCULA
-          button#boton.agregar AGREGAR PELÍCULA
-        - if (agregarPelicula)
-          h1 it works
+                td
+                  form(action=`/pelicula/update/${peliculas[i].id_pelicula}`,method="GET")
+                    button#editareliminar(type='submit')
+                      i.far.fa-edit.fa-lg
+                td 
+                  form(action=`/pelicula/delete/${peliculas[i].id_pelicula}`,method="POST")
+                    button#editareliminar(type='submit')
+                      i.fas.fa-trash-alt.fa-lg
+        - if (pelicula)  
+          .row
+            .col-6
+              form(action='/pelicula/update' method="POST")
+                .form-group
+                  label(for='titulo') 
+                  input#titulo.form-control(type='text'  value=`${pelicula.titulo}` placeholder='titulo'  name='titulo' required)
+                .form-group
+                  label(for='fecha_estreno') 
+                  input#fechaestreno.form-control(type='text' value=`${pelicula.fecha_estreno}`  placeholder='fecha de estreno'  name='fecha_estreno' required)
+                .form-group
+                  label(for='descripcion') 
+                  input#descripcion.form-control(type='text'  value=`${pelicula.descripcion}` placeholder='descripcion'  name='descripcion' required)
+                .form-group
+                  label(for='duracion') 
+                  input#descripcion.form-control(type='text'  value=`${pelicula.duracion}` placeholder='duracion'  name='duracion' required)
+                .form-group
+                  label(for='censura') 
+                  input#censura.form-control(type='text' value=`${pelicula.censura}` placeholder='censura'  name='censura' required)
+                button#boton.agregar(type="submit") AGREGAR PELÍCULA
+

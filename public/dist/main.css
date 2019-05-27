@@ -60,16 +60,15 @@ body {
 }
 
 #boton {
-    margin-top: 70%;
-    border-style: solid;
-    border-width: 0.5px;
+    margin-top: 0;
+    border-radius: 12px;
     padding: 16px 40px;
-    background: transparent;
-    color: white;
+    background: #A60D1B;
+    color: #fff;
     letter-spacing: 4px;
     font-weight: 400;
     font-size: 16px;
-    margin-left: 60%;
+    margin-left: 55%;
 }
 
 .agregar {
@@ -78,15 +77,15 @@ body {
 }
 
 .contenedor {
-    width: 50%;
     background-color: #131418;
     height: 100vh;
-    margin-left: 50%;
+    width: 50%;
 }
 
 table {
-    margin-top: 30%;
-    margin-left: 20%;
+    margin-top: 20%;
+    margin-left: 3%;
+    margin-right: 3%;
     border-collapse: separate;
     border-spacing: 0;
     min-width: 450px;
@@ -131,5 +130,96 @@ td {
   /* bottom-right border-radius */
   table tr:last-child td:last-child {
     border-bottom-right-radius: 6px;
+  }
+
+  table#sedes tr th,
+  table#sedes tr td {
+    border-right: 1px solid #FDDD4B
+     !important;
+    border-bottom: 1px solid #FDDD4B !important;
+    padding: 5px;
+  }
+  table#sedes tr th:first-child,
+  table#sedes tr td:first-child {
+    border-left: 1px solid #FDDD4B !important;
+  }
+  table#sedes tr th {
+    background: #FDDD4B !important;
+    border-top: 1px solid #FDDD4B !important;
+    text-align: left;
+  }
+
+  #titulo {
+    margin-top: 10%;
+    margin-left: 10%;
+    background: transparent;
+    width: 200px;
+    height: 30px;
+    border-color: #A60D1B;
+  }
+
+  #fechaestreno {
+    margin-top: 0px;
+    margin-left: 10%;
+    background: transparent;
+    width: 200px;
+    height: 30px;
+    border-color: #A60D1B;
+  }
+
+  #descripcion {
+    margin-top: 0;
+    margin-left: 10%;
+    background: transparent;
+    width: 200px;
+    height: 30px;
+    border-color: #A60D1B;
+  }
+
+  #censura {
+    margin-top: 0;
+    margin-left: 10%;
+    background: transparent;
+    width: 200px;
+    height: 30px;
+    border-color: #A60D1B;
+  }
+
+  .seat {
+    background-color: rgb(116, 211, 92);
+    border-radius: 9px;
+    border-style: solid;
+    border-width: 3.4px;
+    border-color: #fff;
+    width: 28px;
+    height: 28px;
+    margin-top: 1px; 
+    margin-left: 0;
+    padding: 0;
+  }
+
+  table#butacas tr td {
+    border-color: transparent;
+  }
+  table#butacas tr th:first-child,
+  table#butacas tr td:first-child {
+    border-color: transparent;
+  }
+  table#butacas tr th {
+    border-color: transparent;
+  }
+
+  .tablabutacas {
+    margin-left: 1%;
+  }
+
+  #header {
+    margin-left: 95%;
+  }
+
+  #editareliminar {
+    background: transparent;
+    color: #fff;
+    border: none;
   }
 /*# sourceMappingURL=main.css.map*/
