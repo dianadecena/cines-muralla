@@ -9,7 +9,7 @@ controller.getSedes = async function (callback){
     try {
         let sedes = await Sede.findAll({
             where: {
-                id_sede: 2
+                id_sede
             }
         });
         sedes = sedes.map(result => result.dataValues);

@@ -80,7 +80,7 @@ app.use((req, res, next) => {
 app.use("/", routeIndex);
 app.use('/pelicula', routePelicula);
 app.use('/sede', routeSede);
-app.use('/entradas', routeEntradas);
+app.use('/entradas', routeEntradas); 
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);

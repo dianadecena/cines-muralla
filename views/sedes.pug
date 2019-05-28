@@ -2,30 +2,52 @@ extends layout
 
 block content
 
-  
-  .contenedor
+  - if (true) 
     .row
-      .col-md-7
-        - if (!agregarPelicula)
-          table#sedes
-            thead
-              tr
-                th ID
-                th Ubicación
-                th Nombre Fiscal
-                th Horario de llegada
-                th Horario de salida
-                th Cantidad de salas
-                th Editar
-                th Eliminar
-            tbody
-            - for (var i = 0; i < sedes.length; i++)
-              tr
-                td #{sedes[i].id_sede}
-                td #{sedes[i].ubicacion}
-                td #{sedes[i].nombre_fiscal}
-                td #{sedes[i].horario_llegada}
-                td #{sedes[i].horario_salida}
-                td #{sedes[i].cant_salas}
-                td X
-                td X
+      .col-6
+        form(action='/sedes/create' method="POST")
+          .form-group
+            label(for='ubicacion') 
+            input#titulo.form-control(type='text' placeholder='ubicacion'  name='ubicacion' required)
+          .form-group
+            label(for='nombre_fiscal') 
+            input#fechaestreno.form-control(type='text' placeholder='nombre fiscal'  name='nombre_fiscal' required)
+          .form-group
+            label(for='horario_llegada') 
+            input#descripcion.form-control(type='text' placeholder='horario llegada'  name='horario_llegada' required)
+          .form-group
+            label(for='horario_salida') 
+            input#descripcion.form-control(type='text' placeholder='horario salida'  name='horario_salida' required)
+          .form-group
+            label(for='cant_salas') 
+            input#censura.form-control(type='text' placeholder='cant salas'  name='cant_salas' required)
+          button#boton.agregar(type="submit") AGREGAR SEDE
+      .contenedor#contenedor
+        .col-6
+        table#sedes
+          thead
+            tr
+              th ID
+              th Ubicación
+              th Nombre fiscal
+              th Horario llegada
+              th Horario salida
+              th Cantidad de salas
+              th Editar
+              th Eliminar
+          tbody
+          - for (var i = 0; i < sedes.length; i++)
+            tr
+              td #{sedes[i].id_sede}
+              td #{sedes[i].ubicacion}
+              td #{sedes[i].nombre_fiscal}
+              td #{sedes[i].horario_llegada}
+              td #{sedes[i].horario_salida}
+              td #{sedes[i].cant_salas}
+              td
+                button#editareliminar(type='submit')
+                  i.far.fa-edit.fa-lg
+              td 
+                button#editareliminar(type='submit')
+                  i.fas.fa-trash-alt.fa-lg
+

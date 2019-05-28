@@ -49,7 +49,7 @@ router.post('/delete/:id', (req, res) => {
     }
 });
 
-router.get('/update/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     console.log(req.params.id)
     if(req.params.id){
         peliculaController.getPelicula(req.params.id, (pelicula, err) => {
@@ -59,16 +59,7 @@ router.get('/update/:id', (req, res) => {
                     msg: 'Fallo al buscar la película'
                 })
             }else{
-                peliculaController.getPeliculas((peliculas, err) => {
-                    if(err){
-                        res.json({
-                            success: false,
-                            msg: 'Fallo al obtener peliculas'
-                        });
-                    }else{
-                        res.render('pelicula', {peliculas, pelicula});
-                    }
-                });
+                res.render('pelicula', {pelicula});
             }
         });
     }

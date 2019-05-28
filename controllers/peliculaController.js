@@ -51,7 +51,6 @@ controller.deletePelicula = async function (id_pelicula, callback) {
 }
 
 controller.getPelicula = async function (id_pelicula, callback){
-
     try {
         let pelicula = await Pelicula.findAll({
             where: {
