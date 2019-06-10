@@ -4,7 +4,7 @@ const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 
 router.get("/", (req, res) => {
-  res.render("home", { title: "Cines Muralla" });
+  res.render("home");
 });
 
 router.get("signin", (req, res) => {

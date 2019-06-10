@@ -2,26 +2,32 @@ extends layout
 
 block content
 
-  - if (true) 
+  - if (sedes) 
     .row
       .col-6
+        .nav
+          ul
+            li
+              a#ab(href="#") Funciones
+            li 
+              a#ab(href="/idiomas") Cartelera 
         form(action='/sedes/create' method="POST")
           .form-group
             label(for='ubicacion') 
-            input#titulo.form-control(type='text' placeholder='ubicacion'  name='ubicacion' required)
+            input#titulo.form-control.sede(type='text' placeholder='ubicacion'  name='ubicacion' required)
           .form-group
             label(for='nombre_fiscal') 
-            input#fechaestreno.form-control(type='text' placeholder='nombre fiscal'  name='nombre_fiscal' required)
+            input#fechaestreno.form-control.sede(type='text' placeholder='nombre fiscal'  name='nombre_fiscal' required)
           .form-group
             label(for='horario_llegada') 
-            input#descripcion.form-control(type='text' placeholder='horario llegada'  name='horario_llegada' required)
+            input#descripcion.form-control.sede(type='text' placeholder='horario llegada'  name='horario_llegada' required)
           .form-group
             label(for='horario_salida') 
-            input#descripcion.form-control(type='text' placeholder='horario salida'  name='horario_salida' required)
+            input#descripcion.form-control.sede(type='text' placeholder='horario salida'  name='horario_salida' required)
           .form-group
             label(for='cant_salas') 
-            input#censura.form-control(type='text' placeholder='cant salas'  name='cant_salas' required)
-          button#boton.agregar(type="submit") AGREGAR SEDE
+            input#censura.form-control.sede(type='text' placeholder='cant salas'  name='cant_salas' required)
+          button#boton.agregar.bsede(type="submit") AGREGAR SEDE
       .contenedor#contenedor
         .col-6
         table#sedes
@@ -45,9 +51,30 @@ block content
               td #{sedes[i].horario_salida}
               td #{sedes[i].cant_salas}
               td
-                button#editareliminar(type='submit')
-                  i.far.fa-edit.fa-lg
+                form(action=`/sedes/${sedes[i].id_sede}`,method="GET")
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
               td 
-                button#editareliminar(type='submit')
-                  i.fas.fa-trash-alt.fa-lg
-
+                form(action=`sedes/delete/${sedes[i].id_sede}`,method="POST")
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg
+  - if (sede)  
+    .row
+      .col-6
+        form(action=`/sedes/update/${sede[0].id_sede}` method="POST")
+          .form-group
+            label(for='ubicacion') 
+            input#titulo.form-control(type='text'  value=`${sede[0].ubicacion}` placeholder='ubicacion'  name='ubicacion' required)
+          .form-group
+            label(for='nombre_fiscal') 
+            input#fechaestreno.form-control(type='text' value=`${sede[0].nombre_fiscal}` placeholder='nombre fiscal'  name='nombre_fiscal' required)
+          .form-group
+            label(for='horario_llegada') 
+            input#descripcion.form-control(type='text'  value=`${sede[0].horario_llegada}` placeholder='horario llegada'  name='horario_llegada' required)
+          .form-group
+            label(for='horario_salida') 
+            input#descripcion.form-control(type='text'  value=`${sede[0].horario_salida}` placeholder='horario salida'  name='horario_salida' required)
+          .form-group
+            label(for='cant_salas') 
+            input#censura.form-control(type='text' value=`${sede[0].cant_salas}` placeholder='cant salas' name='cant_salas' required)
+          button#boton.agregar(type="submit") AGREGAR SEDE

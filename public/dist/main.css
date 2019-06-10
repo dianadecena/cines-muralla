@@ -40,57 +40,88 @@ body {
     padding-right: 36px;
 }
 
-.header {
-    position: absolute;
-    top: 38%;
-    left: 34%;
-    transform: translate(-50%, -50%);
+#ab {
+  color: #000000 !important;
 }
 
-.header h1 {
-    color: #fff;
+a {
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(180, 180, 180);
+}
+
+.header {
+    margin-top: 20%;
+    margin-left: 5%;
+    color: #000000;
     font-weight: bolder;
-    font-size: 85px;
+    font-size: 90px;
     padding: 0;
     font-family: Arial;
 }
 
-.header p {
+.texto {
     color: #fff;
     font-weight: lighter;
+    font-size: 16px;
+    color: #000000;
+    margin-left: 2%;
 }
 
-#boton {
+.boton {
     margin-top: 0;
-    border-radius: 12px;
     padding: 16px 40px;
-    background: #e70634;
-    box-shadow: 0px 0px 5px #e70634;
+    background: transparent;
+    border: #fff;
+    border-style: solid;
+    border-width: 0.5px;
     color: #fff;
     letter-spacing: 4px;
     font-weight: 400;
-    font-size: 16px;
-    margin-left: 55%;
+    font-size: 20px;
+    margin-left: 70%;
+    margin-top: 90%;
+}
+
+#register {
+  margin-top: 10%;
+  margin-left: 10%;
+  background: transparent;
+  width: 200px;
+  height: 30px;
+  border-color: #aa45be;
+  border-width: 2px;
+  border-radius: 6px;
 }
 
 .agregar {
+  border-radius: 12px;
   border: #ff0000;
   color: #ff0000;
+  box-shadow: 0px 0px 5px #e70634;
 }
 
 .contenedor {
     background-color: #131515;
     height: 100vh;
     width: 50%;
+    overflow-y: auto;
 }
 
 table {
-    margin-top: 20%;
-    margin-left: 3%;
-    margin-right: 5%;
+    margin: 20% auto auto auto;
     border-collapse: separate;
     border-spacing: 0;
-    min-width: 420px;
+    width: 500px;
+}
+
+.scroll {
+  overflow:scroll;
+  height:100%;
+  width:100px;
 }
 
 td {
@@ -146,7 +177,23 @@ td {
   }
   table#sedes tr th {
     background: #dde706 !important;
-    border-top: 1px solid #dde706 !important;
+    border-top: 1px solid !important;
+    text-align: left;
+  }
+
+  table#idiomas tr th,
+  table#idiomas tr td {
+    border-right: 1px solid #06e780 !important;
+    border-bottom: 1px solid #06e780 !important;
+    padding: 5px;
+  }
+  table#idiomas tr th:first-child,
+  table#idiomas tr td:first-child {
+    border-left: 1px solid #06e780 !important;
+  }
+  table#idiomas tr th {
+    background: #06e780 !important;
+    border-top: 1px solid #06e780 !important;
     text-align: left;
   }
 
@@ -231,5 +278,24 @@ td {
     background: transparent;
     color: #fff;
     border: none;
+  }
+
+  .sede {
+    border-color: #dde706 !important;
+  }
+
+  .bsede {
+    background: #dde706 !important;
+    box-shadow: 0px 0px 5px #dde706 !important;
+  }
+
+  .idiomas {
+    border-color: #06e780 !important;
+  }
+
+  .bidiomas {
+    background: #06e780 !important;
+    box-shadow: 0px 0px 5px #06e780 !important;
+    margin-top: 42% !important;
   }
 /*# sourceMappingURL=main.css.map*/

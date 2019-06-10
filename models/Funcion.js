@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Sede = database.define('Sede', {
-    id_sede: {
+const Funcion = database.define('Funcion', {
+    id_funcion: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
@@ -13,39 +13,34 @@ const Sede = database.define('Sede', {
             isNumeric: true
         }
     },
-    ubicacion: {
-        type: sequelize.STRING,
+    id_sede: {
+        type: sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: true,
+            isNumeric: true
         }
     },
-    nombre_fiscal: {
-        type: sequelize.STRING,
+    id_pelicula: {
+        type: sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: true,
+            isNumeric: true
         }
     },
-    horario_llegada: {
-        type: sequelize.STRING,
+    id_sala: {
+        type: sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: true,
+            isNumeric: true
         }
     },
-    horario_salida: {
-        type:  sequelize.STRING,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true
-        }
-    },
-    cant_salas: {
+    horario_inicio: {
         type:  sequelize.INTEGER,
         allowNull: false,
 
@@ -54,9 +49,18 @@ const Sede = database.define('Sede', {
             isNumeric: true
         }
     },
+    horario_final: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            notEmpty: false,
+            isNumeric: true
+        }
+    },
 }, {
     timestamps: false,
     freezeTableName: true
 });
 
-module.exports = Sede;
+module.exports = Funcion;

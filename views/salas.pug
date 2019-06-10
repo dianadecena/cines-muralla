@@ -1,0 +1,56 @@
+extends layout
+
+block content
+
+  - if (salasPorSede) 
+    .row
+      .col-6
+        form(action='/salas/create' method="POST")
+          .form-group
+            label(for='id_tipo') 
+            select#id_tipo.form-control(type='select' name='id_tipo' required).custom-select
+                option(value="" selected) ...
+                //- for (let i = 0; i < tipoSala.length; i++)
+                    option(value=`${tipoSala[i].id_tipo}`) #{tipoSala[i].tipo}
+        form(action='/salas/create' method="POST")
+          .form-group
+            label(for='id_tr') 
+            select#id_tipo.form-control(type='select' name='id_tr' required).custom-select
+                option(value="" selected) ...
+                //- for (let i = 0; i < tipoRepro.length; i++)
+                    option(value=`${tipoRepro[i].id_tr}`) #{tipoRepro[i].tr}
+          button#boton.agregar(type="submit") AGREGAR SALA
+      .contenedor#contenedor
+        .col-6
+        table
+          thead
+            tr
+              th ID
+              th Sede
+              th Tipo
+              th Tecnología de reproducción
+              th Cantidad de asientos
+          tbody
+          - for (var i = 0; i < salasPorSede.length; i++)
+            tr
+              td #{salasPorSede[i].id_sala}
+              - for(let j = 0; j < sedes.length; j++)
+                - if(salasPorSede[i].id_sede == sedes[j].id_sede) 
+                  td #{sedes[j].ubicacion}
+              - for(let k = 0; k < tipoSala.length; k++)
+                - if(salasPorSede[i].id_tipo == tipoSala[k].id_tipo) 
+                  td #{tipoSala[j].tipo}
+              - for(let l = 0; l < tipoRepro.length; l++)
+                - if(salasPorSede[i].id_tr == tipoRepro[l].id_tr) 
+                  td #{tipoRepro[l].tr}
+              td #{peliculas[i].cant_asientos}
+              td
+                form(action=`/salas/${salas[i].id_sala}`,method="GET")
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
+              td 
+                form(action=`/salas/delete/${salas[i].id_sala}`,method="POST")
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg
+
+

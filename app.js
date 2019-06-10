@@ -16,6 +16,9 @@ const routeIndex = require("./routes/index");
 const routePelicula = require('./routes/pelicula');
 const routeSede = require('./routes/sedes');
 const routeEntradas = require('./routes/entradas');
+const routeIdiomas = require('./routes/idiomas');
+const routeSalas = require('./routes/salas');
+const routeUser = require('./routes/register');
 
 // Creamos La aplicacion en Express
 const app = express();
@@ -79,8 +82,11 @@ app.use((req, res, next) => {
 // Configuracion de las rutas
 app.use("/", routeIndex);
 app.use('/pelicula', routePelicula);
-app.use('/sede', routeSede);
+app.use('/sedes', routeSede);
 app.use('/entradas', routeEntradas); 
+app.use('/idiomas', routeIdiomas); 
+app.use('/salas', routeSalas);
+app.use('/register', routeUser);
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);

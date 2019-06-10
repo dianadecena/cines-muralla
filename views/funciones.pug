@@ -2,15 +2,9 @@ extends layout
 
 block content
 
-  - if (peliculas) 
+  - if (funciones) 
     .row
       .col-6
-        .nav
-          ul
-            li
-              a#ab(href="#") Subtítulos
-            li 
-              a#ab(href="/idiomas") Idiomas 
         form(action='/pelicula/create' method="POST")
           .form-group
             label(for='titulo') 
@@ -34,13 +28,11 @@ block content
           thead
             tr
               th ID
-              th Título
-              th Fecha de estreno
-              th Descripción
-              th Duración
-              th Censura
-              th Editar
-              th Eliminar
+              th Sede
+              th Película
+              th Sala
+              th Horario inicio
+              th Horario final 
           tbody
           - for (var i = 0; i < peliculas.length; i++)
             tr

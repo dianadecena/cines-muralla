@@ -2,15 +2,9 @@ extends layout
 
 block content
 
-  - if (peliculas) 
+  - if (true) 
     .row
       .col-6
-        .nav
-          ul
-            li
-              a#ab(href="#") Subtítulos
-            li 
-              a#ab(href="/idiomas") Idiomas 
         form(action='/pelicula/create' method="POST")
           .form-group
             label(for='titulo') 
@@ -33,23 +27,16 @@ block content
         table
           thead
             tr
-              th ID
-              th Título
-              th Fecha de estreno
-              th Descripción
-              th Duración
-              th Censura
-              th Editar
-              th Eliminar
+              th Sede
+              th Película
+              th Idioma
+              th Subtítulos 
           tbody
-          - for (var i = 0; i < peliculas.length; i++)
+          - for (var i = 0; i < carteleras.length; i++)
             tr
-              td #{peliculas[i].id_pelicula}
-              td #{peliculas[i].titulo}
-              td #{peliculas[i].fecha_estreno}
-              td #{peliculas[i].descripcion}
-              td #{peliculas[i].duracion}
-              td #{peliculas[i].censura}
+              td #{carteleras[i].id_pelicula}
+              td #{carteleras[i].titulo}
+              td #{carteleras[i].fecha_estreno}
               td
                 form(action=`/pelicula/${peliculas[i].id_pelicula}`,method="GET")
                   button#editareliminar(type='submit')
@@ -61,21 +48,21 @@ block content
   - if (pelicula)  
     .row
       .col-6
-        form(action=`/pelicula/update/${pelicula[0].id_pelicula}` method="POST")
+        form(action='/pelicula/update' method="POST")
           .form-group
             label(for='titulo') 
             input#titulo.form-control(type='text'  value=`${pelicula[0].titulo}` placeholder='titulo'  name='titulo' required)
-          .form-group
+        .form-group
             label(for='fecha_estreno') 
             input#fechaestreno.form-control(type='text' value=`${pelicula[0].fecha_estreno}` placeholder='fecha de estreno'  name='fecha_estreno' required)
-          .form-group
+        .form-group
             label(for='descripcion') 
             input#descripcion.form-control(type='text'  value=`${pelicula[0].descripcion}` placeholder='descripcion'  name='descripcion' required)
-          .form-group
+        .form-group
             label(for='duracion') 
             input#descripcion.form-control(type='text'  value=`${pelicula[0].duracion}` placeholder='duracion'  name='duracion' required)
-          .form-group
+        .form-group
             label(for='censura') 
             input#censura.form-control(type='text' value=`${pelicula[0].censura}` placeholder='censura' name='censura' required)
-          button#boton.agregar(type="submit") AGREGAR PELÍCULA
+            button#boton.agregar(type="submit") AGREGAR PELÍCULA
 
