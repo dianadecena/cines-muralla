@@ -10,8 +10,8 @@ block content
             label(for='id_tipo') 
             select#id_tipo.form-control(type='select' name='id_tipo' required).custom-select
                 option(value="" selected) ...
-                //- for (let i = 0; i < tipoSala.length; i++)
-                    option(value=`${tipoSala[i].id_tipo}`) #{tipoSala[i].tipo}
+                - for (let i = 0; i < sedes.length; i++)
+                  option(value=`${sedes[i].ubicacion}`) #{sedes[i].ubicacion}
         form(action='/salas/create' method="POST")
           .form-group
             label(for='id_tr') 

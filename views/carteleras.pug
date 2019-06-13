@@ -5,10 +5,13 @@ block content
   - if (true) 
     .row
       .col-6
-        form(action='/pelicula/create' method="POST")
+        form(action='/carteleras/create' method="POST")
           .form-group
-            label(for='titulo') 
-            input#titulo.form-control(type='text' placeholder='titulo'  name='titulo' required)
+            label(for='ubicacion') 
+            select#ubicacion.form-control(type='select' name='ubicacion' required).custom-select
+                option(value="" selected) ...
+                - for (let i = 0; i < sedes.length; i++)
+                  option(value=`${sedes[i].ubicacion}`) #{sedes[i].ubicacion}
           .form-group
             label(for='fecha_estreno') 
             input#fechaestreno.form-control(type='text' placeholder='fecha de estreno'  name='fecha_estreno' required)
@@ -24,7 +27,7 @@ block content
           button#boton.agregar(type="submit") AGREGAR PELÍCULA
       .contenedor#contenedor
         .col-6
-        table
+        table#carteleras 
           thead
             tr
               th Sede
@@ -48,7 +51,7 @@ block content
   - if (pelicula)  
     .row
       .col-6
-        form(action='/pelicula/update' method="POST")
+        form(action='/carteleras/update' method="POST")
           .form-group
             label(for='titulo') 
             input#titulo.form-control(type='text'  value=`${pelicula[0].titulo}` placeholder='titulo'  name='titulo' required)
