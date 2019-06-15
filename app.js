@@ -19,6 +19,8 @@ const routeEntradas = require('./routes/entradas');
 const routeIdiomas = require('./routes/idiomas');
 const routeSalas = require('./routes/salas');
 const routeUser = require('./routes/register');
+const routeCarteleras = require('./routes/carteleras');
+const routeFunciones = require('./routes/funciones');
 
 // Creamos La aplicacion en Express
 const app = express();
@@ -87,6 +89,8 @@ app.use('/entradas', routeEntradas);
 app.use('/idiomas', routeIdiomas); 
 app.use('/salas', routeSalas);
 app.use('/register', routeUser);
+app.use('/carteleras', routeCarteleras);
+app.use('/funciones', routeFunciones);
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);

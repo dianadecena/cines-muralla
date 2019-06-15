@@ -22,24 +22,6 @@ const Sala = database.define('Sala', {
             isNumeric: true
         }
     },
-    id_tipo: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
-    id_tr: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
     cant_asientos: {
         type:  sequelize.INTEGER,
         allowNull: false,
@@ -55,6 +37,24 @@ const Sala = database.define('Sala', {
 
         validate: {
             notEmpty: true
+        }
+    },
+    id_tr: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true,
+            isNumeric: true
+        }
+    },
+    id_tipo: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true,
+            isNumeric: true
         }
     },
 }, {

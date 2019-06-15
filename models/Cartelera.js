@@ -5,8 +5,6 @@ const Funcion = database.define('Cartelera', {
     id_sede: {
         type: sequelize.INTEGER,
         allowNull: false,
-        primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
@@ -22,21 +20,14 @@ const Funcion = database.define('Cartelera', {
             isNumeric: true
         }
     },
-    id_subtitulos: {
+    id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
+        autoIncrement: true,
 
         validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
-    id_idioma: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
+            notEmpty: false,
             isNumeric: true
         }
     },

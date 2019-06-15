@@ -2,55 +2,52 @@ extends layout
 
 block content
 
-  - if (salasPorSede) 
+  - if (true) 
     .row
       .col-6
+        .nav
+          ul
+            li
+              a#ab(href="#") Salas en mantenimiento 
+            li
+              a#ab(href="#") Mapa de la sala 
         form(action='/salas/create' method="POST")
+          .form-group
+            label(for='id_sede') 
+            select#id_sede.form-control.seleccion(type='select' name='id_sede' required).custom-select
+                option(value="" selected) SELECCIONAR SEDE
+                - for (let i = 0; i < sedes.length; i++)
+                  option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
+          .form-group
+            label(for='cant_asientos') 
+            select#id_tipo.form-control.seleccion(type='select' name='cant_asientos' required).custom-select
+                option(value="" selected) SELECCIONAR CANTIDAD DE ASIENTOS
+                  option(value=30) 30
+                  option(value=40) 40
+                  option(value=50) 50
           .form-group
             label(for='id_tipo') 
-            select#id_tipo.form-control(type='select' name='id_tipo' required).custom-select
-                option(value="" selected) ...
-                - for (let i = 0; i < sedes.length; i++)
-                  option(value=`${sedes[i].ubicacion}`) #{sedes[i].ubicacion}
-        form(action='/salas/create' method="POST")
+            select#id_tipo.form-control.seleccion(type='select' name='id_tipo' required).custom-select
+                option(value="" selected) SELECCIONAR TIPO DE SALA
+                  option(value=1) Normal
+                  option(value=2) Premium
           .form-group
             label(for='id_tr') 
-            select#id_tipo.form-control(type='select' name='id_tr' required).custom-select
-                option(value="" selected) ...
-                //- for (let i = 0; i < tipoRepro.length; i++)
-                    option(value=`${tipoRepro[i].id_tr}`) #{tipoRepro[i].tr}
+            select#id_tipo.form-control.seleccion(type='select' name='id_tr' required).custom-select
+                option(value="" selected) SELECCIONAR TIPO DE REPRODUCCION
+                  option(value=1) Normal
+                  option(value=2) 3D
+                  option(value=3) 4D
+                  option(value=4) iMax
+                  option(value=5) Atmos
+          .form-group
+            label(for='disponible') 
+            select#id_tipo.form-control.seleccion(type='select' name='disponible' required).custom-select
+                option(value="" selected) SELECCIONAR DISPONIBILIDAD
+                  option(value=1) Disponible
+                  option(value=0) No disponible
           button#boton.agregar(type="submit") AGREGAR SALA
       .contenedor#contenedor
         .col-6
-        table
-          thead
-            tr
-              th ID
-              th Sede
-              th Tipo
-              th Tecnología de reproducción
-              th Cantidad de asientos
-          tbody
-          - for (var i = 0; i < salasPorSede.length; i++)
-            tr
-              td #{salasPorSede[i].id_sala}
-              - for(let j = 0; j < sedes.length; j++)
-                - if(salasPorSede[i].id_sede == sedes[j].id_sede) 
-                  td #{sedes[j].ubicacion}
-              - for(let k = 0; k < tipoSala.length; k++)
-                - if(salasPorSede[i].id_tipo == tipoSala[k].id_tipo) 
-                  td #{tipoSala[j].tipo}
-              - for(let l = 0; l < tipoRepro.length; l++)
-                - if(salasPorSede[i].id_tr == tipoRepro[l].id_tr) 
-                  td #{tipoRepro[l].tr}
-              td #{peliculas[i].cant_asientos}
-              td
-                form(action=`/salas/${salas[i].id_sala}`,method="GET")
-                  button#editareliminar(type='submit')
-                    i.far.fa-edit.fa-lg
-              td 
-                form(action=`/salas/delete/${salas[i].id_sala}`,method="POST")
-                  button#editareliminar(type='submit')
-                    i.fas.fa-trash-alt.fa-lg
 
 

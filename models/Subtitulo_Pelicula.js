@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Tipo_Sala = database.define('Tipo_Sala', {
-    id_tipo: {
+const Subtitulo_Pelicula = database.define('Subtitulo_Pelicula', {
+    id_subtitulo: {
         type: sequelize.INTEGER,
         allowNull: false,
 
@@ -11,12 +11,13 @@ const Tipo_Sala = database.define('Tipo_Sala', {
             isNumeric: true
         }
     },
-    id_sala: {
-        type: sequelize.STRING,
+    id_pelicula: {
+        type: sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: false,
+            isNumeric: true
         }
     },
 }, {
@@ -24,4 +25,4 @@ const Tipo_Sala = database.define('Tipo_Sala', {
     freezeTableName: true
 });
 
-module.exports = Tipo_Sala;
+module.exports = Subtitulo_Pelicula;

@@ -13,7 +13,7 @@ const Tipo_Repro = database.define('Tipo_Repro', {
             isNumeric: true
         }
     },
-    tr: {
+    tipo_repro: {
         type: sequelize.STRING,
         allowNull: false,
 

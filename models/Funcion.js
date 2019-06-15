@@ -13,7 +13,7 @@ const Funcion = database.define('Funcion', {
             isNumeric: true
         }
     },
-    id_sede: {
+    id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
 
@@ -22,16 +22,7 @@ const Funcion = database.define('Funcion', {
             isNumeric: true
         }
     },
-    id_pelicula: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
-    id_sala: {
+    id_dia: {
         type: sequelize.INTEGER,
         allowNull: false,
 

@@ -224,6 +224,17 @@ td {
     border-radius: 6px;
   }
 
+  #id_sede {
+    margin-top: 10%;
+  }
+
+  .seleccion {
+    background: transparent;
+    border-color: #ff0000;
+    border-width: 2px;
+    border-radius: 6px;
+  }
+
   #fechaestreno {
     margin-top: 0px;
     margin-left: 10%;

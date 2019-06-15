@@ -7,65 +7,33 @@ block content
       .col-6
         form(action='/carteleras/create' method="POST")
           .form-group
-            label(for='ubicacion') 
-            select#ubicacion.form-control(type='select' name='ubicacion' required).custom-select
+            label(for='id_sede') 
+            select#ubicacion.form-control(type='select' name='id_sede' required).custom-select
                 option(value="" selected) ...
                 - for (let i = 0; i < sedes.length; i++)
-                  option(value=`${sedes[i].ubicacion}`) #{sedes[i].ubicacion}
+                  option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
           .form-group
-            label(for='fecha_estreno') 
-            input#fechaestreno.form-control(type='text' placeholder='fecha de estreno'  name='fecha_estreno' required)
+            label(for='id_pelicula') 
+            select#ubicacion.form-control(type='select' name='id_pelicula' required).custom-select
+                option(value="" selected) ...
+                - for (let i = 0; i < peliculas.length; i++)
+                  option(value=`${peliculas[i].id_pelicula}`) #{peliculas[i].titulo}
           .form-group
-            label(for='descripcion') 
-            input#descripcion.form-control(type='text' placeholder='descripcion'  name='descripcion' required)
+            label(for='id_censura') 
+            select#ubicacion.form-control(type='select' name='id_censura' required).custom-select
+                option(value="" selected) SELECCIONAR CENSURA
+                  option(value=1) A
+                  option(value=2) B
+                  option(value=3) C
+                  option(value=4) D
           .form-group
-            label(for='duracion') 
-            input#descripcion.form-control(type='text' placeholder='duracion'  name='duracion' required)
-          .form-group
-            label(for='censura') 
-            input#censura.form-control(type='text' placeholder='censura'  name='censura' required)
-          button#boton.agregar(type="submit") AGREGAR PELÍCULA
+            label(for='idiomas') 
+            select#ubicacion.form-control(type='select' name='idiomas' required).custom-select
+                option(value="" selected) ...
+                - for (let i = 0; i < idiomas.length; i++)
+                  option(value=`${idiomas[i].idioma}`) #{idiomas[i].idioma}
+          button#boton.agregar(type="submit") AGREGAR CARTELERA
       .contenedor#contenedor
         .col-6
-        table#carteleras 
-          thead
-            tr
-              th Sede
-              th Película
-              th Idioma
-              th Subtítulos 
-          tbody
-          - for (var i = 0; i < carteleras.length; i++)
-            tr
-              td #{carteleras[i].id_pelicula}
-              td #{carteleras[i].titulo}
-              td #{carteleras[i].fecha_estreno}
-              td
-                form(action=`/pelicula/${peliculas[i].id_pelicula}`,method="GET")
-                  button#editareliminar(type='submit')
-                    i.far.fa-edit.fa-lg
-              td 
-                form(action=`/pelicula/delete/${peliculas[i].id_pelicula}`,method="POST")
-                  button#editareliminar(type='submit')
-                    i.fas.fa-trash-alt.fa-lg
-  - if (pelicula)  
-    .row
-      .col-6
-        form(action='/carteleras/update' method="POST")
-          .form-group
-            label(for='titulo') 
-            input#titulo.form-control(type='text'  value=`${pelicula[0].titulo}` placeholder='titulo'  name='titulo' required)
-        .form-group
-            label(for='fecha_estreno') 
-            input#fechaestreno.form-control(type='text' value=`${pelicula[0].fecha_estreno}` placeholder='fecha de estreno'  name='fecha_estreno' required)
-        .form-group
-            label(for='descripcion') 
-            input#descripcion.form-control(type='text'  value=`${pelicula[0].descripcion}` placeholder='descripcion'  name='descripcion' required)
-        .form-group
-            label(for='duracion') 
-            input#descripcion.form-control(type='text'  value=`${pelicula[0].duracion}` placeholder='duracion'  name='duracion' required)
-        .form-group
-            label(for='censura') 
-            input#censura.form-control(type='text' value=`${pelicula[0].censura}` placeholder='censura' name='censura' required)
-            button#boton.agregar(type="submit") AGREGAR PELÍCULA
+
 

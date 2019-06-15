@@ -2,72 +2,44 @@ extends layout
 
 block content
 
-  - if (funciones) 
+  - if (true) 
     .row
       .col-6
-        form(action='/pelicula/create' method="POST")
+        form(action='/funciones/create' method="POST")
           .form-group
-            label(for='titulo') 
-            input#titulo.form-control(type='text' placeholder='titulo'  name='titulo' required)
+            label(for='id_sede') 
+            select#id_tipo.form-control(type='select' name='id_sede' required).custom-select
+                option(value="" selected) SELECCIONAR SEDE
+                - for (let i = 0; i < sedes.length; i++)
+                  option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
           .form-group
-            label(for='fecha_estreno') 
-            input#fechaestreno.form-control(type='text' placeholder='fecha de estreno'  name='fecha_estreno' required)
+            label(for='id_cartelera') 
+            select#id_tipo.form-control(type='select' name='id_cartelera' required).custom-select
+                option(value="" selected) SELECCIONAR PELICULA
+                - for (let i = 0; i < PeliculasPorSede.length; i++)
+                  option(value=`${PeliculasPorSede[i].id_cartelera}`) #{PeliculasPorSede[i].titulo}
           .form-group
-            label(for='descripcion') 
-            input#descripcion.form-control(type='text' placeholder='descripcion'  name='descripcion' required)
+            label(for='id_sala') 
+            select#id_tipo.form-control(type='select' name='id_sala' required).custom-select
+                option(value="" selected) SELECCIONAR SALA
+                - for (let i = 0; i < salas.length; i++)
+                  option(value=`${salas[i].id_sala}`) #{salas[i].id_sala}
           .form-group
-            label(for='duracion') 
-            input#descripcion.form-control(type='text' placeholder='duracion'  name='duracion' required)
+            label(for='tipo_repro') 
+            select#id_tipo.form-control(type='select' name='tipo_repro' required).custom-select
+                option(value="" selected) SELECCIONAR TIPO DE REPRODUCCION
+                  option(value='Normal') Normal
+                  option(value='3D') 3D
+                  option(value='4D') 4D
+                  option(value='iMax') iMax
+                  option(value='Atmos') Atmos
           .form-group
-            label(for='censura') 
-            input#censura.form-control(type='text' placeholder='censura'  name='censura' required)
-          button#boton.agregar(type="submit") AGREGAR PELÍCULA
+            label(for='disponible') 
+            select#id_tipo.form-control(type='select' name='disponible' required).custom-select
+                option(value="" selected) SELECCIONAR DISPONIBILIDAD
+                  option(value=1) Disponible
+                  option(value=0) No disponible
+          button#boton.agregar(type="submit") AGREGAR SALA
       .contenedor#contenedor
         .col-6
-        table
-          thead
-            tr
-              th ID
-              th Sede
-              th Película
-              th Sala
-              th Horario inicio
-              th Horario final 
-          tbody
-          - for (var i = 0; i < peliculas.length; i++)
-            tr
-              td #{peliculas[i].id_pelicula}
-              td #{peliculas[i].titulo}
-              td #{peliculas[i].fecha_estreno}
-              td #{peliculas[i].descripcion}
-              td #{peliculas[i].duracion}
-              td #{peliculas[i].censura}
-              td
-                form(action=`/pelicula/${peliculas[i].id_pelicula}`,method="GET")
-                  button#editareliminar(type='submit')
-                    i.far.fa-edit.fa-lg
-              td 
-                form(action=`/pelicula/delete/${peliculas[i].id_pelicula}`,method="POST")
-                  button#editareliminar(type='submit')
-                    i.fas.fa-trash-alt.fa-lg
-  - if (pelicula)  
-    .row
-      .col-6
-        form(action=`/pelicula/update/${pelicula[0].id_pelicula}` method="POST")
-          .form-group
-            label(for='titulo') 
-            input#titulo.form-control(type='text'  value=`${pelicula[0].titulo}` placeholder='titulo'  name='titulo' required)
-          .form-group
-            label(for='fecha_estreno') 
-            input#fechaestreno.form-control(type='text' value=`${pelicula[0].fecha_estreno}` placeholder='fecha de estreno'  name='fecha_estreno' required)
-          .form-group
-            label(for='descripcion') 
-            input#descripcion.form-control(type='text'  value=`${pelicula[0].descripcion}` placeholder='descripcion'  name='descripcion' required)
-          .form-group
-            label(for='duracion') 
-            input#descripcion.form-control(type='text'  value=`${pelicula[0].duracion}` placeholder='duracion'  name='duracion' required)
-          .form-group
-            label(for='censura') 
-            input#censura.form-control(type='text' value=`${pelicula[0].censura}` placeholder='censura' name='censura' required)
-          button#boton.agregar(type="submit") AGREGAR PELÍCULA
 

@@ -46,12 +46,13 @@ const Pelicula = database.define('Pelicula', {
             isNumeric: true
         }
     },
-    censura: {
-        type: sequelize.CHAR,
+    id_genero: {
+        type:  sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: false
+            notEmpty: true,
+            isNumeric: true
         }
     },
 }, {
