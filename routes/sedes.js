@@ -27,8 +27,7 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                res.render('salas', {id_sede})
-                res.redirect('/salas');
+                res.redirect('/sedes');
             }
         })
     }

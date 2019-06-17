@@ -10,6 +10,7 @@ controller.getIdiomas = async function (callback){
         let idiomas = await Idioma.findAll({
         });
         idiomas = idiomas.map(result => result.dataValues);
+        console.log(idiomas);
         callback(idiomas, null);
     }catch (error) {
         callback(null, error);

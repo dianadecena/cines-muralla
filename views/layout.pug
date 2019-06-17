@@ -8,6 +8,21 @@ html(lang="en")
     link(rel="stylesheet", href="./dist/main.css")
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous")
     title #{title} | #{h.siteTitle}
+    script.
+      var cont_seats = 0;
+      function selectSeat(x) {
+        if(x.className === "seat" && cont_seats < 10){
+          x.className = "selected";
+          cont_seats++;
+        } else if(x.className === "selected"){
+          x.className = "seat";
+          cont_seats--;
+        }
+      }
+      function cantAsientos(){
+        return cont_seats;
+      }
+
 
   body
     .contenedorr
@@ -22,9 +37,9 @@ html(lang="en")
           li
             a(href="/pelicula") Películas
           li 
-            a(href="#") Combos
+            a(href="/taquilla") Taquilla 
           li
-            a(href="#") Carteleras
+            a(href="/carteleras") Carteleras
     // Main Content
     main
       block content

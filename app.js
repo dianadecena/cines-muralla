@@ -15,7 +15,7 @@ require("./config/passport");
 const routeIndex = require("./routes/index");
 const routePelicula = require('./routes/pelicula');
 const routeSede = require('./routes/sedes');
-const routeEntradas = require('./routes/entradas');
+const routeTaquilla = require('./routes/taquilla');
 const routeIdiomas = require('./routes/idiomas');
 const routeSalas = require('./routes/salas');
 const routeUser = require('./routes/register');
@@ -85,7 +85,7 @@ app.use((req, res, next) => {
 app.use("/", routeIndex);
 app.use('/pelicula', routePelicula);
 app.use('/sedes', routeSede);
-app.use('/entradas', routeEntradas); 
+app.use('/taquilla', routeTaquilla); 
 app.use('/idiomas', routeIdiomas); 
 app.use('/salas', routeSalas);
 app.use('/register', routeUser);

@@ -8,31 +8,37 @@ block content
         form(action='/carteleras/create' method="POST")
           .form-group
             label(for='id_sede') 
-            select#ubicacion.form-control(type='select' name='id_sede' required).custom-select
-                option(value="" selected) ...
+            select#seleccionf.form-control.seleccion.seleccionf(type='select' name='id_sede' required).custom-select
+                option(value="" selected) SELECCIONAR SEDE
                 - for (let i = 0; i < sedes.length; i++)
                   option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
           .form-group
             label(for='id_pelicula') 
-            select#ubicacion.form-control(type='select' name='id_pelicula' required).custom-select
-                option(value="" selected) ...
+            select#ubicacion.form-control.seleccion(type='select' name='id_pelicula' required).custom-select
+                option(value="" selected) SELECCIONAR PELICULA
                 - for (let i = 0; i < peliculas.length; i++)
                   option(value=`${peliculas[i].id_pelicula}`) #{peliculas[i].titulo}
           .form-group
             label(for='id_censura') 
-            select#ubicacion.form-control(type='select' name='id_censura' required).custom-select
+            select#ubicacion.form-control.seleccion(type='select' name='id_censura' required).custom-select
                 option(value="" selected) SELECCIONAR CENSURA
                   option(value=1) A
                   option(value=2) B
                   option(value=3) C
                   option(value=4) D
           .form-group
-            label(for='idiomas') 
-            select#ubicacion.form-control(type='select' name='idiomas' required).custom-select
-                option(value="" selected) ...
+            label(for='id_idioma') 
+            select#ubicacion.form-control.seleccion(type='select' name='id_idioma' required).custom-select
+                option(value="" selected) SELECCIONAR IDIOMA 
                 - for (let i = 0; i < idiomas.length; i++)
-                  option(value=`${idiomas[i].idioma}`) #{idiomas[i].idioma}
-          button#boton.agregar(type="submit") AGREGAR CARTELERA
+                  option(value=`${idiomas[i].id_idioma}`) #{idiomas[i].idioma}
+          .form-group
+            label(for='id_subtitulo') 
+            select#ubicacion.form-control.seleccion(type='select' name='id_subtitulo' required).custom-select
+                option(value="" selected) SELECCIONAR SUBTITULOS
+                - for (let i = 0; i < idiomas_subtitulos.length; i++)
+                  option(value=`${idiomas_subtitulos[i].id_subtitulo}`) #{idiomas_subtitulos[i].idioma_sub}
+          button#boton.agregar.bcartelera(type="submit") AGREGAR CARTELERA
       .contenedor#contenedor
         .col-6
 

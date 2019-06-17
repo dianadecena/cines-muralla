@@ -7,7 +7,7 @@ const controller = {}
 controller.getSubtituloPelicula = async function (callback){
     try {
         let subtituloPelicula = await database.query(
-            "SELECT U.`censura` FROM `cartelera` AS C"+
+            "SELECT U.`censura`, E.`id_subtitulo` FROM `cartelera` AS C"+
             " INNER JOIN `censura_pelicula` AS E ON C.`id_pelicula` = E.`id_pelicula`"+
             " INNER JOIN `censura` AS U ON E.`id_censura` = U.`id_censura`",
             { type: sequelize.QueryTypes.SELECT}
@@ -20,12 +20,12 @@ controller.getSubtituloPelicula = async function (callback){
     }
 }
 
-controller.createCensuraPelicula = async function (data, callback) {
+controller.createSubtituloPelicula = async function (data, callback) {
     console.log(data);
     try {
-        let response = await Censura_Pelicula.create({
-            id_censura = data.id_censura,
-            id_pelicula = data.id_pelicula
+        let response = await Subtitulo_Pelicula.create({
+            id_subtitulo: data.id_subtitulo,
+            id_pelicula: data.id_pelicula
         });
         
         callback(null);

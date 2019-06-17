@@ -20,19 +20,19 @@ controller.getCensuraPelicula = async function (callback){
     }
 }
 
-/*controller.createCensuraPelicula = async function (data, callback) {
+controller.createCensuraPelicula = async function (data, callback) {
     console.log(data);
     try {
         let response = await Censura_Pelicula.create({
-            id_censura = data.id_censura,
-            id_pelicula = data.id_pelicula
+            id_censura: data.id_censura,
+            id_pelicula: data.id_pelicula
         });
         
         callback(null);
     } catch (error) {
         callback(error);
     }
-}*/
+}
 
 
 module.exports = controller;

@@ -20,6 +20,17 @@ const Subtitulo_Pelicula = database.define('Subtitulo_Pelicula', {
             isNumeric: true
         }
     },
+    id_subtitulop: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+        primaryKey:  true,
+        autoIncrement: true,
+
+        validate: {
+            notEmpty: false,
+            isNumeric: true
+        }
+    },
 }, {
     timestamps: false,
     freezeTableName: true

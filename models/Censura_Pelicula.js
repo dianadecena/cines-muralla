@@ -20,6 +20,17 @@ const Censura_Pelicula = database.define('Censura_Pelicula', {
             isNumeric: true
         }
     },
+    id_censurap: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+        primaryKey:  true,
+        autoIncrement: true,
+
+        validate: {
+            notEmpty: false,
+            isNumeric: true
+        }
+    },
 }, {
     timestamps: false,
     freezeTableName: true

@@ -1,6 +1,6 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
-const Cartelera = require('../models/Pelicula');
+const Cartelera = require('../models/Cartelera');
 
 const controller = {}
 
@@ -16,6 +16,31 @@ controller.getPeliculasPorSede = async function (callback){
         callback(carteleras, null);
     }catch (error) {
         callback(null, error);
+    }
+}
+
+controller.getCarteleras = async function (callback){
+    try {
+        let carteleras = await Cartelera.findAll({
+        });
+        carteleras = carteleras.map(result => result.dataValues);
+        callback(carteleras, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
+controller.createCartelera = async function (data, callback) {
+    console.log(data);
+    try {
+        let response = await Cartelera.create({
+            id_sede: data.id_sede,
+            id_pelicula: data.id_pelicula
+        });
+        
+        callback(null);
+    } catch (error) {
+        callback(error);
     }
 }
 

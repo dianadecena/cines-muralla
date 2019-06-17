@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Funcion = database.define('Cartelera', {
+const Cartelera = database.define('Cartelera', {
     id_sede: {
         type: sequelize.INTEGER,
         allowNull: false,
