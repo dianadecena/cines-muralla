@@ -8,13 +8,19 @@ block content
         .nav
           ul
             li
-              a#ab(href="#") Funciones
+              a#ab(href="/funciones") Funciones
             li 
-              a#ab(href="/idiomas") Cartelera 
+              a#ab(href="/carteleras") Cartelera 
         form(action='/sedes/create' method="POST")
           .form-group
+            label(for='estado') 
+            input#titulo.form-control.sede(type='text' placeholder='estado'  name='estado' required)
+          .form-group
+            label(for='ciudad') 
+            input#seleccionp.form-control.sede(type='text' placeholder='ciudad'  name='ciudad' required)
+          .form-group
             label(for='ubicacion') 
-            input#titulo.form-control.sede(type='text' placeholder='ubicacion'  name='ubicacion' required)
+            input#seleccionp.form-control.sede(type='text' placeholder='ubicacion'  name='ubicacion' required)
           .form-group
             label(for='nombre_fiscal') 
             input#seleccionp.form-control.sede(type='text' placeholder='nombre fiscal'  name='nombre_fiscal' required)
@@ -34,6 +40,8 @@ block content
           thead
             tr
               th ID
+              th Estado
+              th Ciudad 
               th Ubicación
               th Nombre fiscal
               th Horario llegada
@@ -45,6 +53,8 @@ block content
           - for (var i = 0; i < sedes.length; i++)
             tr
               td #{sedes[i].id_sede}
+              td #{sedes[i].estado}
+              td #{sedes[i].ciudad}
               td #{sedes[i].ubicacion}
               td #{sedes[i].nombre_fiscal}
               td #{sedes[i].horario_llegada}

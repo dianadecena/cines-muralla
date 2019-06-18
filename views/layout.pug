@@ -14,22 +14,22 @@ html(lang="en")
         if(x.className === "seat" && cont_seats < 10){
           x.className = "selected";
           cont_seats++;
+          var elem = document.getElementById('titulo');
+          elem.value = cont_seats;
         } else if(x.className === "selected"){
           x.className = "seat";
           cont_seats--;
+          var elem = document.getElementById('titulo');
+          elem.value = cont_seats;
         }
       }
-      function cantAsientos(){
-        return cont_seats;
-      }
-
 
   body
     .contenedorr
       .nav
         ul
           li
-            a(href="#") Home
+            a(href="/") Home
           li
             a(href="/sedes") Sedes
           li
@@ -39,7 +39,7 @@ html(lang="en")
           li 
             a(href="/taquilla") Taquilla 
           li
-            a(href="/carteleras") Carteleras
+            a(href="/carteleras") Comida
     // Main Content
     main
       block content

@@ -51,7 +51,7 @@ block content
               td #{peliculas[i].duracion}
               td #{peliculas[i].censura}
               td
-                form(action=`/pelicula/${peliculas[i].id_pelicula}`,method="GET")
+                form(action=`/pelicula/edit/${peliculas[i].id_pelicula}`,method="GET")
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
               td 
