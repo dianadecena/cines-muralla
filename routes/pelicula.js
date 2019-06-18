@@ -49,7 +49,7 @@ router.post('/delete/:id', (req, res) => {
     }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
     console.log(req.params.id)
     if(req.params.id){
         peliculaController.getPelicula(req.params.id, (pelicula, err) => {
@@ -80,6 +80,6 @@ router.post('/update/:id', (req, res) => {
     }
 });
 
-router.get('/pelicula/:id');
+router.get('edit/:id');
 
 module.exports = router;

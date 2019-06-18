@@ -13,6 +13,22 @@ const Sede = database.define('Sede', {
             isNumeric: true
         }
     },
+    estado: {
+        type: sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true
+        }
+    },
+    ciudad: {
+        type: sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true
+        }
+    },
     ubicacion: {
         type: sequelize.STRING,
         allowNull: false,

@@ -7,7 +7,7 @@ block content
         form(action='/pelicula/create' method="POST")
             .form-group
                 label(for='cant_asientos') 
-                input#titulo.form-control(type='text' value=`${cant_asientos}` placeholder=`${cant_asientos}` name='cant_asientos' required)
+                input#titulo.form-control(type='text' value='' placeholder='cantidad de asientos' name='cant_asientos' required)
     .contenedor
       .col-6
       - if (true)
