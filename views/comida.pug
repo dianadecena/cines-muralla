@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  - if (comida) 
+    .row
+      .col-6
+        .nav
+        form(action='/idiomas/create' method="POST")
+          .form-group
+            label(for='comida') 
+            input#titulo.form-control.comida(type='text' placeholder='comida' name='comida' required)
+          button#boton.agregar.comida(type="submit") AGREGAR COMIDA
+      .contenedor#contenedor
+        .col-6
+        table#comida
+          thead
+            tr
+              th ID
+              th Categoria
+              th Comida 
+              th Editar
+              th Eliminar
+          tbody
+          - for (var i = 0; i < comida.length; i++)
+            tr
+              td #{comida[i].id_comida}
+              td #{comida[i].comida}
+              td
+                form(action=`/comida/${comida[i].id_comida}`,method="GET")
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
