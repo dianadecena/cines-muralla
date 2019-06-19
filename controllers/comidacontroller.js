@@ -20,7 +20,6 @@ controller.createComida = async function (data, callback) {
     console.log(data);
     try {
         let response = await Comida.create({
-            id_comida: data.id_comida,
             id_categoria: data.id_categoria,
             nombre_comida: data.nombre_comida
         });
