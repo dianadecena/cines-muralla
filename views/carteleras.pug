@@ -41,5 +41,26 @@ block content
           button#boton.agregar.bcartelera(type="submit") AGREGAR CARTELERA
       .contenedor#contenedor
         .col-6
+        table#carteleras
+          thead
+            tr
+              th Sede
+              th Película
+              th ID
+              th Editar
+              th Eliminar
+          tbody
+          - for (var i = 0; i < carteleras.length; i++)
+            tr
+              td #{carteleras[i].id_sede}
+              td #{carteleras[i].id_pelicula}
+              td #{carteleras[i].id_cartelera}
+              td
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
+              td 
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg
+
 
 

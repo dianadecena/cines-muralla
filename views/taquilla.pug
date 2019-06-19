@@ -4,10 +4,17 @@ block content
 
   .row
     .col-6
-        form(action='/pelicula/create' method="POST")
+        form(action='/taquilla/create' method="POST")
             .form-group
                 label(for='cant_asientos') 
-                input#titulo.form-control(type='text' value='' placeholder='cantidad de asientos' name='cant_asientos' required)
+                input#asientos.form-control.seleccions.seleccionf(type='text' value='' placeholder='cantidad de asientos' name='cant_asientos' required)
+            .form-group
+                label(for='id_funcion') 
+                select#id_tipo.form-control.seleccions(type='select' name='id_funcion' required).custom-select
+                    option(value="" selected) SELECCIONAR FUNCION
+                    - for (let i = 0; i < funciones.length; i++)
+                      option(value=`${funciones[i].id_funcion}`) #{funciones[i].id_funcion}
+            button.ticket(type="submit") GENERAR TICKET 
     .contenedor
       .col-6
       - if (true)
@@ -49,5 +56,7 @@ block content
                 td  
                     #seat.seat(onclick='selectSeat(this)')
         .pantalla
-        button.ticket(type="submit") GENERAR TICKET 
+
+
+
                

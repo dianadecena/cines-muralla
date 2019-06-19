@@ -17,6 +17,20 @@ controller.getSalas = async function (callback){
     }
 }
 
+controller.getSalasPorSede = async function (data, callback){
+    try {
+        let SalasPorSede = await Sala.findAll({
+            where: {
+                id_sede: data.id_sede
+            }
+        });
+        SalasPorSede = SalasPorSede.map(result => result.dataValues);
+        callback(SalasPorSede, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
 // crear sala en una sede
 controller.createSala = async function (data, callback) {
     console.log(data);

@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const salaController = require('../controllers/salaController');
+const funcionController = require('../controllers/funcionController');
 const sedeController = require('../controllers/sedeController');
+const carteleraController = require('../controllers/carteleraController');
+const diasController = require('../controllers/diasController');
+const salaController = require('../controllers/salaController');
 
-/*router.get('/', (req, res) => {
+router.get('/', (req, res) => {
     funcionController.getFunciones((funciones, err) => {
         if (err){
             res.json({
@@ -15,10 +18,19 @@ const sedeController = require('../controllers/sedeController');
                 if(err){
                     res.json({
                         success: false,
-                        msg: 'Fallo buscar modelos'
+                        msg: 'Fallo buscar sedes'
                     })
                 }else{
-                    res.render('funciones', {funciones, sedes})
+                    diasController.getDias((dias, err) => {
+                        if(err){
+                            res.json({
+                                success: false,
+                                msg: 'Fallo buscar sedes'
+                            })
+                        }else{
+                            res.render('funciones', {funciones, sedes, dias})
+                        }
+                    })
                 }
             })
         }    
@@ -40,6 +52,23 @@ router.post('/create', (req, res) => {
             }
         })
     }
-});*/
+});
+
+router.get('/buscar', (req, res) => {
+    console.log(req.body);
+    if(req.body){
+        salaController.getSalasPorSede(req.body, (SalasPorSede, err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: 'Fallo buscar sedes'
+                })
+            }else{
+                res.render('funciones', {SalasPorSede})
+            }
+        })
+    }
+});
+
 
 module.exports = router;

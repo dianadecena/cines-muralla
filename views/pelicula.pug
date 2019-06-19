@@ -26,7 +26,10 @@ block content
             input#seleccionp.form-control(type='text' placeholder='duracion'  name='duracion' required)
           .form-group
             label(for='id_genero') 
-            input#seleccionp.form-control(type='text' placeholder='id_genero'  name='censura' required)
+            select.form-control.seleccionp(type='select' name='id_genero' required).custom-select
+                option(value="" selected) SELECCIONAR GÉNERO
+                - for (let i = 0; i < generos.length; i++)
+                  option(value=`${generos[i].id_genero}`) #{generos[i].genero}
           button#boton.agregar(type="submit") AGREGAR PELÍCULA
       .contenedor#contenedor
         .col-6
@@ -49,7 +52,7 @@ block content
               td #{peliculas[i].fecha_estreno}
               td #{peliculas[i].descripcion}
               td #{peliculas[i].duracion}
-              td #{peliculas[i].censura}
+              td #{peliculas[i].id_genero}
               td
                 form(action=`/pelicula/edit/${peliculas[i].id_pelicula}`,method="GET")
                   button#editareliminar(type='submit')
@@ -75,7 +78,10 @@ block content
             label(for='duracion') 
             input#descripcion.form-control(type='text'  value=`${pelicula[0].duracion}` placeholder='duracion'  name='duracion' required)
           .form-group
-            label(for='censura') 
-            input#censura.form-control(type='text' value=`${pelicula[0].censura}` placeholder='censura' name='censura' required)
+            label(for='id_genero') 
+            select.form-control.seleccionp(type='select' name='id_genero' required).custom-select
+                option(value="" selected) SELECCIONAR GÉNERO
+                - for (let i = 0; i < generos.length; i++)
+                  option(value=`${generos[i].id_genero}`) #{generos[i].genero}
           button#boton.agregar(type="submit") AGREGAR PELÍCULA
 
