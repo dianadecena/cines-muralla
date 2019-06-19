@@ -6,10 +6,15 @@ block content
     .row
       .col-6
         .nav
-        form(action='/idiomas/create' method="POST")
+        form(action='/comida/create' method="POST")
           .form-group
-            label(for='comida') 
-            input#titulo.form-control.comida(type='text' placeholder='comida' name='comida' required)
+            label(for='id_comida') 
+            input#seleccionp.form-control(type='text' placeholder='id' name='id_comida' required)
+            .form-group
+            label(for='id_categoria') 
+            input#seleccionp.form-control(type='text' placeholder='categoria' name='id_categoria' required)
+            label(for='nombre_comida') 
+            input#seleccionp.form-control(type='text' placeholder='nombre' name='nombre_comida' required)        
           button#boton.agregar.comida(type="submit") AGREGAR COMIDA
       .contenedor#contenedor
         .col-6
@@ -25,8 +30,13 @@ block content
           - for (var i = 0; i < comida.length; i++)
             tr
               td #{comida[i].id_comida}
-              td #{comida[i].comida}
-              td
-                form(action=`/comida/${comida[i].id_comida}`,method="GET")
+              td #{comida[i].id_categoria}
+              td #{comida[i].nombre_comida}
+              td  
+                  form(action=`/comida/${comida[i].id_comida}`,method="GET")
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
+              td 
+                form(action=`/comida/delete/${comida[i].id_comida}`,method="POST")
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg

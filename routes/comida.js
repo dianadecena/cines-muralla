@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     console.log(req.body);
     if(req.body){
-        comidaController.createComida( req.body, (err) => {
+        comidacontroller.createComida( req.body, (err) => {
             if(err){
                 res.json({
-                    success: false,
+                   success: false,
                     msg: `Fallo al agregar la comida`
                 })
             console.log(err);

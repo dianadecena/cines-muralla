@@ -22,7 +22,7 @@ controller.createComida = async function (data, callback) {
         let response = await Comida.create({
             id_comida: data.id_comida,
             id_categoria: data.id_categoria,
-            nombre_comida: data.nombre_categoria
+            nombre_comida: data.nombre_comida
         });
         
         callback(null);
