@@ -2,44 +2,66 @@ extends layout
 
 block content
 
-  - if (true) 
+  - if (funciones) 
     .row
       .col-6
-        form(action='/funciones/create' method="POST")
+        form(action='/funciones/buscar' method="GET")
           .form-group
             label(for='id_sede') 
-            select#id_tipo.form-control(type='select' name='id_sede' required).custom-select
+            select#id_tipo.form-control.seleccion.seleccionf(type='select' name='id_sede' required).custom-select
                 option(value="" selected) SELECCIONAR SEDE
                 - for (let i = 0; i < sedes.length; i++)
                   option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
           .form-group
-            label(for='id_cartelera') 
-            select#id_tipo.form-control(type='select' name='id_cartelera' required).custom-select
-                option(value="" selected) SELECCIONAR PELICULA
-                - for (let i = 0; i < PeliculasPorSede.length; i++)
-                  option(value=`${PeliculasPorSede[i].id_cartelera}`) #{PeliculasPorSede[i].titulo}
+            label(for='id_dia') 
+            select#id_tipo.form-control.seleccion(type='select' name='id_dia' required).custom-select
+                option(value="" selected) SELECCIONAR DIA
+                - for (let i = 0; i < dias.length; i++)
+                  option(value=`${dias[i].id_dia}`) #{dias[i].dia}
           .form-group
-            label(for='id_sala') 
-            select#id_tipo.form-control(type='select' name='id_sala' required).custom-select
-                option(value="" selected) SELECCIONAR SALA
-                - for (let i = 0; i < salas.length; i++)
-                  option(value=`${salas[i].id_sala}`) #{salas[i].id_sala}
-          .form-group
-            label(for='tipo_repro') 
-            select#id_tipo.form-control(type='select' name='tipo_repro' required).custom-select
-                option(value="" selected) SELECCIONAR TIPO DE REPRODUCCION
-                  option(value='Normal') Normal
-                  option(value='3D') 3D
-                  option(value='4D') 4D
-                  option(value='iMax') iMax
-                  option(value='Atmos') Atmos
-          .form-group
-            label(for='disponible') 
-            select#id_tipo.form-control(type='select' name='disponible' required).custom-select
-                option(value="" selected) SELECCIONAR DISPONIBILIDAD
-                  option(value=1) Disponible
-                  option(value=0) No disponible
-          button#boton.agregar(type="submit") AGREGAR SALA
+            label(for='horario_inicio') 
+            select#id_tipo.form-control.seleccion(type='select' name='horario_inicio' required).custom-select
+                option(value="" selected) SELECCIONAR HORARIO DE INICIO 
+                  option(value='12:00') 12:00
+                  option(value='01:00') 01:00
+                  option(value='02:00') 02:00
+                  option(value='03:00') 03:00
+                  option(value='04:00') 04:00
+            .form-group
+            label(for='horario_final') 
+            select#id_tipo.form-control.seleccion(type='select' name='horario_final' required).custom-select
+                option(value="" selected) SELECCIONAR HORARIO FINAL
+                  option(value='01:00') 01:00
+                  option(value='02:00') 02:00
+                  option(value='03:00') 03:00
+                  option(value='04:00') 04:00
+                  option(value='05:00') 05:00
+          button#boton.agregar.bcartelera(type="submit") BUSCAR CARTELERA 
       .contenedor#contenedor
         .col-6
-
+        table#carteleras
+          thead
+            tr
+              th ID
+              th Cartelera
+              th Día
+              th Horario inicio
+              th Horario final
+              th Sala
+              th Editar
+              th Eliminar
+          tbody
+          - for (var i = 0; i < funciones.length; i++)
+            tr
+              td #{funciones[i].id_funcion}
+              td #{funciones[i].id_cartelera}
+              td #{funciones[i].id_dia}
+              td #{funciones[i].horario_inicio}
+              td #{funciones[i].horario_final}
+              td #{funciones[i].id_sala}
+              td
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
+              td 
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg

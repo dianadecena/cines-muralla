@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const peliculaController = require('../controllers/peliculaController');
+const generoController = require('../controllers/generoController');
 
 router.get('/', (req, res) => {
     peliculaController.getPeliculas((peliculas, err) => {
@@ -10,7 +11,16 @@ router.get('/', (req, res) => {
                 msg: 'ERROR'
             });
         }else{
-            res.render('pelicula', {peliculas})     
+            generoController.getGeneros((generos, err) => {
+                if (err){
+                    res.json({
+                        success: false,
+                        msg: 'ERROR'
+                    });
+                }else{
+                    res.render('pelicula', {peliculas, generos})     
+                }    
+            }); 
         }    
     });
 });
@@ -59,7 +69,16 @@ router.get('/edit/:id', (req, res) => {
                     msg: 'Fallo al buscar la película'
                 })
             }else{
-                res.render('pelicula', {pelicula});
+                generoController.getGeneros((generos, err) => {
+                    if (err){
+                        res.json({
+                            success: false,
+                            msg: 'ERROR'
+                        });
+                    }else{
+                        res.render('pelicula', {pelicula, generos})     
+                    }    
+                }); 
             }
         });
     }

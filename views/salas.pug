@@ -49,5 +49,30 @@ block content
           button.agregar.bsala(type="submit") AGREGAR SALA
       .contenedor#contenedor
         .col-6
-
+        table#salas
+          thead
+            tr
+              th ID
+              th Sede
+              th Cantidad de asientos
+              th Disponible
+              th Tipo de Reproducción
+              th Tipo de Sala
+              th Editar
+              th Eliminar
+          tbody
+          - for (var i = 0; i < salas.length; i++)
+            tr
+              td #{salas[i].id_sala}
+              td #{salas[i].id_sede}
+              td #{salas[i].cant_asientos}
+              td #{salas[i].disponible}
+              td #{salas[i].id_tr}
+              td #{salas[i].id_tipo}
+              td
+                  button#editareliminar(type='submit')
+                    i.far.fa-edit.fa-lg
+              td 
+                  button#editareliminar(type='submit')
+                    i.fas.fa-trash-alt.fa-lg
 
