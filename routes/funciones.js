@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
                         msg: 'Fallo buscar sedes'
                     })
                 }else{
+                    
                     diasController.getDias((dias, err) => {
                         if(err){
                             res.json({

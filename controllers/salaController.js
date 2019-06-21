@@ -40,7 +40,8 @@ controller.createSala = async function (data, callback) {
             cant_asientos: data.cant_asientos,
             id_tipo: data.id_tipo,
             id_tr: data.id_tr,
-            disponible: data.disponible
+            disponible: data.disponible,
+            mapa_sala:data.mapa_sala
         });
         
         callback(null);

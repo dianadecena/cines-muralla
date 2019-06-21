@@ -3,6 +3,7 @@ const router = express.Router();
 const salaController = require('../controllers/salaController');
 const sedeController = require('../controllers/sedeController');
 
+
 router.get('/', (req, res) => {
     salaController.getSalas((salas, err) => {
         if (err){
@@ -32,7 +33,7 @@ router.post('/create', (req, res) => {
             if(err){
                 res.json({
                     success: false,
-                    msg: `Fallo al crear la película`
+                    msg: `Fallo al crear la sala`
                 })
             console.log(err);
             }else{

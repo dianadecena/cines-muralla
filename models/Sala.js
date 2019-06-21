@@ -57,6 +57,15 @@ const Sala = database.define('Sala', {
             isNumeric: true
         }
     },
+    mapa_sala: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            notEmpty: false,
+            isNumeric: true
+        }
+    },
 }, {
     timestamps: false,
     freezeTableName: true

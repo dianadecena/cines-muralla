@@ -46,6 +46,13 @@ block content
                 option(value="" selected) SELECCIONAR DISPONIBILIDAD
                   option(value=1) Disponible
                   option(value=0) No disponible
+          .form-group
+            label(for='mapa_sala') 
+            select#id_tipo.form-control.seleccions(type='select' name='mapa_sala' required).custom-select
+                option(value="" selected) SELECCIONAR MAPA
+                  option(value=1) Un pasillo 
+                  option(value=2) Dos pasillos
+                  option(value=3) Tres pasillos 
           button.agregar.bsala(type="submit") AGREGAR SALA
       .contenedor#contenedor
         .col-6
@@ -58,6 +65,7 @@ block content
               th Disponible
               th Tipo de Reproducción
               th Tipo de Sala
+              th Mapa
               th Editar
               th Eliminar
           tbody
@@ -69,6 +77,7 @@ block content
               td #{salas[i].disponible}
               td #{salas[i].id_tr}
               td #{salas[i].id_tipo}
+              td #{salas[i].mapa_sala}
               td
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
