@@ -22,6 +22,8 @@ controller.createSede = async function (data, callback) {
     console.log(data);
     try {
         let response = await Sede.create({
+            estado: data.estado,
+            ciudad: data.ciudad,
             ubicacion: data.ubicacion,
             nombre_fiscal: data.nombre_fiscal,
             horario_llegada: data.horario_llegada,
@@ -69,6 +71,8 @@ controller.getSede = async function (id_sede, callback){
 controller.updateSede = async function (data, id_sede, callback) {
     try {
         let response = await Sede.update({
+            estado: data.estado,
+            ciudad: data.ciudad,
             ubicacion: data.ubicacion,
             nombre_fiscal: data.nombre_fiscal,
             horario_llegada: data.horario_llegada,

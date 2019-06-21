@@ -33,5 +33,41 @@ controller.createFuncion = async function (data, callback) {
     }
 }
 
+controller.getFuncion = async function (id_funcion, callback){
+    try {
+        let funcion = await Funcion.findAll({
+            where: {
+                id_funcion
+            }
+        });
+        
+        funcion = funcion.map(result => result.dataValues);
+        callback(funcion, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
+controller.updateSala = async function (data, id_funcion, callback) {
+    try {
+        let response = await Funcion.update({
+            id_cartelera: data.id_cartelera,
+            id_dia: data.id_dia,
+            horario_inicio: data.horario_inicio,
+            horario_final: data.horario_final,
+            id_sala: data.id_sala
+        },{
+            where:{
+                id_funcion
+            } 
+        });
+        
+        callback(null);
+    } catch (error) {
+        callback(error);
+    }
+}
+
+
 
 module.exports = controller;
