@@ -15,4 +15,19 @@ controller.getGeneros = async function (callback){
     }
 }
 
+controller.getGenero = async function (id_genero, callback){
+    try {
+        let genero = await Genero.findAll({
+            where: {
+                id_genero
+            }
+        });
+        
+        genero = genero.map(result => result.dataValues);
+        callback(genero, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
 module.exports = controller;

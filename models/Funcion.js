@@ -36,8 +36,7 @@ const Funcion = database.define('Funcion', {
         allowNull: false,
 
         validate: {
-            notEmpty: true,
-            isNumeric: true
+            notEmpty: true
         }
     },
     horario_final: {
@@ -45,8 +44,7 @@ const Funcion = database.define('Funcion', {
         allowNull: false,
 
         validate: {
-            notEmpty: false,
-            isNumeric: true
+            notEmpty: false
         }
     },
     id_sala: {

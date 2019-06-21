@@ -84,6 +84,22 @@ router.get('/edit/:id', (req, res) => {
     }
 });
 
+router.get('/ver/genero/:id', (req, res) => {
+    console.log(req.params.id)
+    if(req.params.id){
+        generoController.getGenero(req.params.id, (genero, err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: 'Fallo al buscar la película'
+                })
+            }else{
+                res.render('pelicula', {genero}) 
+            }
+        });
+    }
+});
+
 router.post('/update/:id', (req, res) => {
     if(req.params.id){
         peliculaController.updatePelicula(req.body, req.params.id, (err) => {

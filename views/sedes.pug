@@ -36,7 +36,7 @@ block content
           button#boton.agregar.bsede(type="submit") AGREGAR SEDE
       .contenedor#contenedor
         .col-6
-        table#sedes
+        table#sedes.vertabla
           thead
             tr
               th ID
@@ -73,18 +73,48 @@ block content
       .col-6
         form(action=`/sedes/update/${sede[0].id_sede}` method="POST")
           .form-group
+            label(for='estado') 
+            input#titulo.form-control.sede(type='text' value=`${sede[0].estado}` placeholder='estado'  name='estado' required)
+          .form-group
+            label(for='ciudad') 
+            input#seleccionp.form-control.sede(type='text' value=`${sede[0].ciudad}` placeholder='ciudad'  name='ciudad' required)
+          .form-group
             label(for='ubicacion') 
-            input#titulo.form-control(type='text'  value=`${sede[0].ubicacion}` placeholder='ubicacion'  name='ubicacion' required)
+            input#seleccionp.form-control.sede(type='text'  value=`${sede[0].ubicacion}` placeholder='ubicacion'  name='ubicacion' required)
           .form-group
             label(for='nombre_fiscal') 
-            input#fechaestreno.form-control(type='text' value=`${sede[0].nombre_fiscal}` placeholder='nombre fiscal'  name='nombre_fiscal' required)
+            input#seleccionp.form-control.sede(type='text' value=`${sede[0].nombre_fiscal}` placeholder='nombre fiscal'  name='nombre_fiscal' required)
           .form-group
             label(for='horario_llegada') 
-            input#descripcion.form-control(type='text'  value=`${sede[0].horario_llegada}` placeholder='horario llegada'  name='horario_llegada' required)
+            input#seleccionp.form-control.sede(type='text'  value=`${sede[0].horario_llegada}` placeholder='horario llegada'  name='horario_llegada' required)
           .form-group
             label(for='horario_salida') 
-            input#descripcion.form-control(type='text'  value=`${sede[0].horario_salida}` placeholder='horario salida'  name='horario_salida' required)
+            input#seleccionp.form-control.sede(type='text'  value=`${sede[0].horario_salida}` placeholder='horario salida'  name='horario_salida' required)
           .form-group
             label(for='cant_salas') 
-            input#censura.form-control(type='text' value=`${sede[0].cant_salas}` placeholder='cant salas' name='cant_salas' required)
-          button#boton.agregar(type="submit") AGREGAR SEDE
+            input#seleccionp.form-control.sede(type='text' value=`${sede[0].cant_salas}` placeholder='cant salas' name='cant_salas' required)
+          button#boton.agregar.bsede(type="submit") EDITAR SEDE
+      .contenedor#contenedor
+        .col-6
+        table#sedes.vertabla
+          thead
+            tr
+              th ID
+              th Estado
+              th Ciudad 
+              th Ubicación
+              th Nombre fiscal
+              th Horario llegada
+              th Horario salida
+              th Cantidad de salas
+          tbody
+          - for (var i = 0; i < sede.length; i++)
+            tr
+              td #{sede[i].id_sede}
+              td #{sede[i].estado}
+              td #{sede[i].ciudad}
+              td #{sede[i].ubicacion}
+              td #{sede[i].nombre_fiscal}
+              td #{sede[i].horario_llegada}
+              td #{sede[i].horario_salida}
+              td #{sede[i].cant_salas}

@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
                 msg: 'Fallo'
             });
         }else{
-            sedeController.getSedes((sedes, err) => {
+            carteleraController.getCarteleras((carteleras, err) => {
                 if(err){
                     res.json({
                         success: false,
-                        msg: 'Fallo buscar sedes'
+                        msg: 'Fallo buscar carteleras'
                     })
                 }else{
                     
@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
                                 msg: 'Fallo buscar sedes'
                             })
                         }else{
-                            res.render('funciones', {funciones, sedes, dias})
+                            res.render('funciones', {funciones, carteleras, dias})
                         }
                     })
                 }
@@ -45,7 +45,7 @@ router.post('/create', (req, res) => {
             if(err){
                 res.json({
                     success: false,
-                    msg: `Fallo al crear la película`
+                    msg: `Fallo al crear la función`
                 })
             console.log(err);
             }else{
@@ -70,6 +70,58 @@ router.get('/buscar', (req, res) => {
         })
     }
 });
+
+
+router.get('/:id', (req, res) => {
+    console.log(req.params.id)
+    if(req.params.id){
+        funcionController.getFuncion(req.params.id, (funcion, err) => {
+            if (err){
+                res.json({
+                    success: false,
+                    msg: 'Fallo'
+                });
+            }else{
+                sedeController.getSedes((sedes, err) => {
+                    if(err){
+                        res.json({
+                            success: false,
+                            msg: 'Fallo buscar sedes'
+                        })
+                    }else{
+                        diasController.getDias((dias, err) => {
+                            if(err){
+                                res.json({
+                                    success: false,
+                                    msg: 'Fallo buscar sedes'
+                                })
+                            }else{
+                                res.render('funciones', {funcion, sedes, dias})
+                            }
+                        })
+                    }
+                })
+            }    
+        });
+    }
+});
+
+router.post('/update/:id', (req, res) => {
+    if(req.params.id){
+        funcionController.updateFuncion(req.body, req.params.id, (err) => {
+            if(err){
+                res.json({
+                    success: false,
+                    msg: `Fallo al modificar la película ${req.params.id}`
+                })
+            }else{
+                res.redirect('/funciones');
+            }
+        })
+    }
+});
+
+router.get('/funciones/:id');
 
 
 module.exports = router;

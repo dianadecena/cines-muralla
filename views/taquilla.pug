@@ -19,7 +19,7 @@ block content
       .col-6
       - if (true)
         table#butacas.tablabutacas
-         - for (var i = 0; i < 8; i++)
+         - for (var i = 0; i < 10; i++)
             tr
                 td
                     #seat.seat(onclick='selectSeat(this)')
@@ -34,6 +34,8 @@ block content
                 td
                     #seat.seat(onclick='selectSeat(this)')
                 td
+                    #seat.seat(onclick='selectSeat(this)')
+                td 
                     #seat.seat(onclick='selectSeat(this)')
                 td 
                     #seat.seat(onclick='selectSeat(this)')
@@ -55,8 +57,15 @@ block content
                     #seat.seat(onclick='selectSeat(this)')
                 td  
                     #seat.seat(onclick='selectSeat(this)')
+                td 
+                    #seat.seat(onclick='selectSeat(this)')
         .pantalla
-
+        .selected.selecinfo 
+            .info seleccionados.
+        .reserv.selecreserv
+            .info reservados.
+        .seat.selecreserv
+            .info disponibles.
 
 
                
