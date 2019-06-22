@@ -20,17 +20,6 @@ const Idioma_Pelicula = database.define('Idioma_Pelicula', {
             isNumeric: true
         }
     },
-    id_idiomap: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-        primaryKey:  true,
-        autoIncrement: true,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
 }, {
     timestamps: false,
     freezeTableName: true

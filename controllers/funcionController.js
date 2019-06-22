@@ -68,6 +68,18 @@ controller.updateSala = async function (data, id_funcion, callback) {
     }
 }
 
+controller.cambiarFunciones = async function (id_sala, callback) {
+    try {
+        await database.query(
+            "UPDATE `funcion` SET `id_sala` = (SELECT `id_sala` FROM `sala` WHERE `disponible` = 1 LIMIT 1)"+
+            "WHERE `id_sala` = "+id_sala+"",
+            { type: sequelize.QueryTypes.UPDATE}
+        );
+        callback(null);
+    } catch (error) {
+        callback(error);
+    }
+}
 
 
 module.exports = controller;

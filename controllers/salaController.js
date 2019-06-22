@@ -84,5 +84,4 @@ controller.updateSala = async function (data, id_sala, callback) {
     }
 }
 
-
 module.exports = controller;

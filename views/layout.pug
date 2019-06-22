@@ -11,18 +11,23 @@ html(lang="en")
 
     script.
       var cont_seats = 0;
-      function selectSeat(x) {
-        if(x.className === "seat" && cont_seats < 10){
-          x.className = "selected";
+      function selectSeat(x, y) {
+        if(x.className === "seat" && cont_seats < 10 && y==0){
+          x.className = "reserv";
           cont_seats++;
           var elem = document.getElementById('asientos');
           elem.value = cont_seats;
-        } else if(x.className === "selected"){
+        } else if(x.className === "selected" && y==1){
           x.className = "seat";
           cont_seats--;
           var elem = document.getElementById('asientos');
           elem.value = cont_seats;
-        }
+        } else if(x.className === "selected" && y==0){
+          x.className = "reserv";
+          cont_seats--;
+          var elem = document.getElementById('asientos');
+          elem.value = cont_seats;
+      }
       }
 
   body

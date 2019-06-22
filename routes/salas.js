@@ -3,6 +3,7 @@ const router = express.Router();
 const salaController = require('../controllers/salaController');
 const sedeController = require('../controllers/sedeController');
 const tipo_reproController = require('../controllers/sedeController');
+const funcionController = require('../controllers/funcionController');
 
 router.get('/', (req, res) => {
     salaController.getSalas((salas, err) => {
@@ -78,7 +79,22 @@ router.post('/update/:id', (req, res) => {
                     msg: `Fallo al modificar la película ${req.params.id}`
                 })
             }else{
-                res.redirect('/salas');
+                if(req.body.disponible == 0){
+                    funcionController.cambiarFunciones(req.params.id, (err) => {
+                        if(err){
+                            res.json({
+                                success: false,
+                                msg: `Fallo la sala de la función`
+                            })
+                            console.log(err)
+                        }
+                        else{
+                            res.redirect('/funciones');
+                        }
+                    })
+                }else{
+                    res.redirect('/salas');
+                }
             }
         })
     }
