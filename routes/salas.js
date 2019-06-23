@@ -92,7 +92,7 @@ router.get('/ver/sede/:id', (req, res) => {
             if(err){
                 res.json({
                     success: false,
-                    msg: 'Fallo al buscar la película'
+                    msg: 'Fallo al buscar la sede'
                 })
             }else{
                 res.render('salas', {sede}) 

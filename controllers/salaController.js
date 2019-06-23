@@ -31,6 +31,7 @@ controller.getSalasPorSede = async function (data, callback){
     }
 }
 
+
 controller.getSala = async function (id_sala, callback){
     try {
         let sala = await Sala.findAll({

@@ -2,14 +2,38 @@ extends layout
 
 block content
 
-   
-  .row
-    .col-6
-        ul
-                - for (let i = 0; i < funciones.length; i++)   
-                        li
-                        a(href=`taquilla/funcion/${funciones[i].id_funcion}`)  #{funciones[i].id_funcion}
-        form(action='/taquilla/create' method="POST")
+  - if (funciones)
+      .row
+        .col-6
+        .contenedor#contenedor
+          .col-6
+          table#salas.vertabla
+            thead
+            tr
+              th ID
+              th Cartelera
+              th Día
+              th Horario inicio
+              th Horario final
+              th Sala
+            tbody
+             - for (var i = 0; i < funciones.length; i++)
+               tr
+                 td
+                    ul
+                        li 
+                            a(href=`taquilla/funcion/${funciones[i].id_funcion}`) #{funciones[i].id_funcion}
+                 td #{funciones[i].id_cartelera}
+                 td #{funciones[i].id_dia}
+                 td #{funciones[i].horario_inicio}
+                 td #{funciones[i].horario_final}
+                 td #{funciones[i].id_sala}
+
+  - if (sala) 
+      .row
+            .col-6
+                
+         form(action='/taquilla/create' method="POST")
             .form-group
                 label(for='cant_asientos') 
                 input#asientos.form-control.seleccions.seleccionf(type='text' value='' placeholder='cantidad de asientos' name='cant_asientos' required)
@@ -73,4 +97,8 @@ block content
             .info disponibles.
 
 
-               
+
+
+
+
+
