@@ -20,7 +20,8 @@ controller.createGeneroPelicula = async function (data, callback) {
     console.log(data);
     try {
         let response = await Genero_Pelicula.create({
-            genero: data.genero
+            genero: data.genero,
+            id_pelicula: data.id_pelicula
         });
         
         callback(null);

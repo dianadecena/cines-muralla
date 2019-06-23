@@ -35,7 +35,7 @@ controller.createCartelera = async function (data, callback) {
     try {
         let response = await Cartelera.create({
             id_sede: data.id_sede,
-            id_censura: data.id_censura
+            censura: data.censura
         });
         
         callback(null);

@@ -2,11 +2,8 @@ const express = require('express');
 const router = express.Router();
 const carteleraController = require('../controllers/carteleraController');
 const sedeController = require('../controllers/sedeController');
-const idiomaController = require('../controllers/idiomaController');
 const idioma_peliculaController = require('../controllers/idioma_peliculaController');
-const idioma_subtitulosController = require('../controllers/idioma_subtitulosController');
 const peliculaController = require('../controllers/peliculaController');
-const censura_peliculaController = require('../controllers/censura_peliculaController');
 const subtitulo_peliculaController = require('../controllers/subtitulo_peliculaController');
 
 router.get('/', (req, res) => {
@@ -31,26 +28,7 @@ router.get('/', (req, res) => {
                                 msg: 'Fallo buscar peliculas'
                             })
                         }else{
-                            idiomaController.getIdiomas((idiomas, err) => {
-                                if(err){
-                                    console.log(err);
-                                    res.json({
-                                        success: false,
-                                        msg: 'Fallo buscar idiomas'
-                                    })
-                                }else{
-                                    idioma_subtitulosController.getIdiomasSubtitulos((idiomas_subtitulos, err) => {
-                                        if(err){
-                                            res.json({
-                                                success: false,
-                                                msg: 'Fallo buscar idioma subtitulos'
-                                            })
-                                        }else{
-                                            res.render('carteleras', {carteleras, sedes, peliculas, idiomas, idiomas_subtitulos})
-                                        }
-                                    })
-                                }
-                            })
+                            res.render('carteleras', {carteleras, sedes, peliculas})
                         }
                     })
                 }

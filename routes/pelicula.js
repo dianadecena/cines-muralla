@@ -36,17 +36,7 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                genero_peliculaController.createGeneroPelicula(req.body, (err) => {
-                    if(err){
-                        res.json({
-                            success: false,
-                            msg: `Fallo al crear la película`
-                        })
-                    console.log(err);
-                    }else{
-                        res.redirect('/pelicula');
-                    }
-                })
+                res.redirect('/pelicula');
             }
         })
     }

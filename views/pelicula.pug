@@ -8,9 +8,7 @@ block content
         .nav
           ul
             li
-              a#ab(href="#") Subtítulos
-            li 
-              a#ab(href="/idiomas") Idiomas 
+              a#ab(href="/generos") Género 
         form(action='/pelicula/create' method="POST")
           .form-group
             label(for='titulo') 
@@ -24,18 +22,10 @@ block content
           .form-group
             label(for='duracion') 
             input#seleccionp.form-control(type='text' placeholder='duracion'  name='duracion' required)
-          .form-group
-            label(for='genero') 
-            select.form-control.seleccionp(type='select' name='genero' required).custom-select
-                option(value="" selected) SELECCIONAR GÉNERO
-                  option(value='Terror') Terror
-                  option(value='Acción') Acción
-                  option(value='Comedia') Comedia
           button#boton.agregar(type="submit") AGREGAR PELÍCULA
       .contenedor#contenedor
         .col-6
-        .ver Haga click en el ID del género de la película para ver el género.
-        table
+        table.vertabla
           thead
             tr
               th ID

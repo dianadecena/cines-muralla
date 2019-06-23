@@ -12,14 +12,13 @@ const Subtitulo_Pelicula = database.define('Subtitulo_Pelicula', {
             isNumeric: true
         }
     },
-    id_subtitulo: {
-        type: sequelize.INTEGER,
+    subtitulos: {
+        type: sequelize.STRING,
         allowNull: false,
         primaryKey:  true,
 
         validate: {
-            notEmpty: false,
-            isNumeric: true
+            notEmpty: false
         }
     },
 }, {

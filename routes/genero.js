@@ -1,26 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const idioma_peliculaController = require('../controllers/idioma_peliculaController');
-const carteleraController = require('../controllers/carteleraController');
+const genero_peliculaController = require('../controllers/genero_peliculaController');
+const peliculaController = require('../controllers/peliculaController');
 
 router.get('/', (req, res) => {
-    idioma_peliculaController.getIdiomasPelicula((idiomas, err) => {
+    genero_peliculaController.getGenerosPelicula((generos_pelicula, err) => {
         if (err){
             res.json({
                 success: false,
                 msg: 'ERROR'
             });
-        console.log(err)
         }else{
-            carteleraController.getCarteleras((carteleras, err) => {
+            peliculaController.getPeliculas((peliculas, err) => {
                 if (err){
                     res.json({
                         success: false,
                         msg: 'ERROR'
                     });
-                console.log(err)
                 }else{
-                    res.render('idiomas', {idiomas, carteleras})     
+                    res.render('genero', {generos_pelicula, peliculas})     
                 }    
             });   
         }    
@@ -30,7 +28,7 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     console.log(req.body);
     if(req.body){
-        idioma_peliculaController.createIdiomasPelicula( req.body, (err) => {
+        genero_peliculaController.createGeneroPelicula(req.body, (err) => {
             if(err){
                 res.json({
                     success: false,
@@ -38,11 +36,10 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                res.redirect('/idiomas');
+                res.redirect('/generos');
             }
         })
     }
 });
-
 
 module.exports = router;

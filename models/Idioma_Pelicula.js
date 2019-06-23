@@ -12,14 +12,13 @@ const Idioma_Pelicula = database.define('Idioma_Pelicula', {
             isNumeric: true
         }
     },
-    id_idioma: {
-        type: sequelize.INTEGER,
+    idioma: {
+        type: sequelize.STRING,
         allowNull: false,
         primaryKey:  true,
 
         validate: {
-            notEmpty: false,
-            isNumeric: true
+            notEmpty: false
         }
     },
 }, {

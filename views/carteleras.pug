@@ -5,6 +5,14 @@ block content
   - if (true) 
     .row
       .col-6
+        .nav
+          ul
+            li
+              a#ab(href="/idiomas") Idiomas
+            li
+              a#ab(href="/subtitulos") Subtítulos
+            li
+              a#ab(href="/peliculasc") Películas
         form(action='/carteleras/create' method="POST")
           .form-group
             label(for='id_sede') 
@@ -13,12 +21,6 @@ block content
                 - for (let i = 0; i < sedes.length; i++)
                   option(value=`${sedes[i].id_sede}`) #{sedes[i].ubicacion}
           .form-group
-            label(for='id_pelicula') 
-            select#ubicacion.form-control.seleccion(type='select' name='id_pelicula' required).custom-select
-                option(value="" selected) SELECCIONAR PELICULA
-                - for (let i = 0; i < peliculas.length; i++)
-                  option(value=`${peliculas[i].id_pelicula}`) #{peliculas[i].titulo}
-          .form-group
             label(for='id_censura') 
             select#ubicacion.form-control.seleccion(type='select' name='id_censura' required).custom-select
                 option(value="" selected) SELECCIONAR CENSURA
@@ -26,18 +28,6 @@ block content
                   option(value=2) B
                   option(value=3) C
                   option(value=4) D
-          .form-group
-            label(for='id_idioma') 
-            select#ubicacion.form-control.seleccion(type='select' name='id_idioma' required).custom-select
-                option(value="" selected) SELECCIONAR IDIOMA 
-                - for (let i = 0; i < idiomas.length; i++)
-                  option(value=`${idiomas[i].id_idioma}`) #{idiomas[i].idioma}
-          .form-group
-            label(for='id_subtitulo') 
-            select#ubicacion.form-control.seleccion(type='select' name='id_subtitulo' required).custom-select
-                option(value="" selected) SELECCIONAR SUBTITULOS
-                - for (let i = 0; i < idiomas_subtitulos.length; i++)
-                  option(value=`${idiomas_subtitulos[i].id_subtitulo}`) #{idiomas_subtitulos[i].idioma_sub}
           button#boton.agregar.bcartelera(type="submit") AGREGAR CARTELERA
       .contenedor#contenedor
         .col-6
@@ -47,8 +37,6 @@ block content
               th ID
               th Sede
               th Censura 
-              th Idioma
-              th Subtítulos 
               th Editar
               th Eliminar
           tbody
@@ -56,7 +44,7 @@ block content
             tr
               td #{carteleras[i].id_cartelera}
               td #{carteleras[i].id_sede}
-              td #{carteleras[i].id_censura}
+              td #{carteleras[i].censura}
               td
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
