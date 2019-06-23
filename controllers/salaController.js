@@ -53,9 +53,9 @@ controller.createSala = async function (data, callback) {
         let response = await Sala.create({
             id_sede: data.id_sede,
             cant_asientos: data.cant_asientos,
-            id_tipo: data.id_tipo,
-            id_tr: data.id_tr,
-            disponible: data.disponible
+            disponible: data.disponible,
+            tipo_repro: data.tipo_repro,
+            tipo_sala: data.tipo_sala
         });
         
         callback(null);
@@ -69,9 +69,9 @@ controller.updateSala = async function (data, id_sala, callback) {
         let response = await Sala.update({
             id_sede: data.id_sede,
             cant_asientos: data.cant_asientos,
-            id_tipo: data.id_tipo,
-            id_tr: data.id_tr,
-            disponible: data.disponible
+            disponible: data.disponible,
+            tipo_repro: data.tipo_repro,
+            tipo_sala: data.tipo_sala
         },{
             where:{
                 id_sala

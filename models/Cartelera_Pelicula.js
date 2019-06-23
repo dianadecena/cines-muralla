@@ -1,30 +1,21 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Cartelera = database.define('Cartelera', {
+const Cartelera_Pelicula = database.define('Cartelera_Pelicula', {
     id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    id_sede: {
+    id_pelicula: {
         type: sequelize.INTEGER,
         allowNull: false,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
-    id_censura: {
-        type: sequelize.INTEGER,
-        allowNull: false,
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,
@@ -36,4 +27,4 @@ const Cartelera = database.define('Cartelera', {
     freezeTableName: true
 });
 
-module.exports = Cartelera;
+module.exports = Cartelera_Pelicula;

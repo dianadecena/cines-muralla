@@ -25,11 +25,12 @@ block content
             label(for='duracion') 
             input#seleccionp.form-control(type='text' placeholder='duracion'  name='duracion' required)
           .form-group
-            label(for='id_genero') 
-            select.form-control.seleccionp(type='select' name='id_genero' required).custom-select
+            label(for='genero') 
+            select.form-control.seleccionp(type='select' name='genero' required).custom-select
                 option(value="" selected) SELECCIONAR GÉNERO
-                - for (let i = 0; i < generos.length; i++)
-                  option(value=`${generos[i].id_genero}`) #{generos[i].genero}
+                  option(value='Terror') Terror
+                  option(value='Acción') Acción
+                  option(value='Comedia') Comedia
           button#boton.agregar(type="submit") AGREGAR PELÍCULA
       .contenedor#contenedor
         .col-6
@@ -47,24 +48,23 @@ block content
               th Eliminar
           tbody
           - for (var i = 0; i < peliculas.length; i++)
-            tr
-              td #{peliculas[i].id_pelicula}
-              td #{peliculas[i].titulo}
-              td #{peliculas[i].fecha_estreno}
-              td #{peliculas[i].descripcion}
-              td #{peliculas[i].duracion}
-              td 
-                form(action=`/pelicula/ver/genero/${peliculas[i].id_genero}`,method="GET")
-                  button#editareliminar(type='submit') 
-                    #{peliculas[i].id_genero}
-              td
-                form(action=`/pelicula/edit/${peliculas[i].id_pelicula}`,method="GET")
-                  button#editareliminar(type='submit')
-                    i.far.fa-edit.fa-lg
-              td 
-                form(action=`/pelicula/delete/${peliculas[i].id_pelicula}`,method="POST")
-                  button#editareliminar(type='submit')
-                    i.fas.fa-trash-alt.fa-lg
+            - for(let j = 0; j < generos_pelicula.length; j++)
+              - if(peliculas[i].id_pelicula == generos_pelicula[j].id_pelicula)
+                tr
+                  td #{peliculas[i].id_pelicula}
+                  td #{peliculas[i].titulo}
+                  td #{peliculas[i].fecha_estreno}
+                  td #{peliculas[i].descripcion}
+                  td #{peliculas[i].duracion}
+                  td #{generos_pelicula[i].genero}
+                  td
+                    form(action=`/pelicula/edit/${peliculas[i].id_pelicula}`,method="GET")
+                      button#editareliminar(type='submit')
+                        i.far.fa-edit.fa-lg
+                  td 
+                    form(action=`/pelicula/delete/${peliculas[i].id_pelicula}`,method="POST")
+                      button#editareliminar(type='submit')
+                        i.fas.fa-trash-alt.fa-lg
   - if (pelicula)  
     .row
       .col-6
@@ -108,22 +108,6 @@ block content
               td #{pelicula[i].descripcion}
               td #{pelicula[i].duracion}
               td #{pelicula[i].id_genero}
-  - if (genero)
-      .row
-        .col-6
-        .contenedor#contenedor
-          .col-6
-          table
-            thead
-              tr
-                th ID
-                th Género 
-            tbody
-            - for (var i = 0; i < genero.length; i++)
-              tr
-                td #{genero[i].id_genero}
-                td #{genero[i].genero}
-
 
 
 

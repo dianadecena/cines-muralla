@@ -24,7 +24,7 @@ controller.createIdiomaPelicula = async function (data, callback) {
     console.log(data);
     try {
         let response = await Idioma_Pelicula.create({
-            id_pelicula: data.id_pelicula,
+            id_cartelera: data.id_cartelera,
             id_idioma: data.id_idioma
         });
         

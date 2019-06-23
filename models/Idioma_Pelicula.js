@@ -2,9 +2,10 @@ const sequelize = require('sequelize');
 const database = require('../config/database');
 
 const Idioma_Pelicula = database.define('Idioma_Pelicula', {
-    id_pelicula: {
+    id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,
@@ -14,6 +15,7 @@ const Idioma_Pelicula = database.define('Idioma_Pelicula', {
     id_idioma: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,

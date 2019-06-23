@@ -1,8 +1,17 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Tipo_Repro = database.define('Tipo_Repro', {
-    id_sala: {
+const Genero_Pelicula = database.define('Genero_Pelicula', {
+    genero: {
+        type: sequelize.STRING,
+        allowNull: false,
+        primaryKey:  true,
+
+        validate: {
+            notEmpty: false
+        }
+    },
+    id_pelicula: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
@@ -12,18 +21,9 @@ const Tipo_Repro = database.define('Tipo_Repro', {
             isNumeric: true
         }
     },
-    tipo_repro: {
-        type: sequelize.STRING,
-        allowNull: false,
-        primaryKey:  true,
-
-        validate: {
-            notEmpty: false
-        }
-    },
 }, {
     timestamps: false,
     freezeTableName: true
 });
 
-module.exports = Tipo_Repro;
+module.exports = Genero_Pelicula;

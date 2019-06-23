@@ -15,3 +15,19 @@ controller.getTiposRepro = async function (callback){
         callback(null, error);
     }
 }
+
+controller.createTipoRepro = async function (data, callback) {
+    console.log(data);
+    try {
+        let response = await Tipo_Repro.create({
+            tipo_repro: data.tipo_repro
+        });
+        
+        callback(null);
+    } catch (error) {
+        callback(error);
+    }
+    
+}
+
+module.exports = controller;

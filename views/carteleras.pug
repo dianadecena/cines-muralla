@@ -44,17 +44,19 @@ block content
         table#carteleras
           thead
             tr
-              th Sede
-              th Película
               th ID
+              th Sede
+              th Censura 
+              th Idioma
+              th Subtítulos 
               th Editar
               th Eliminar
           tbody
           - for (var i = 0; i < carteleras.length; i++)
             tr
-              td #{carteleras[i].id_sede}
-              td #{carteleras[i].id_pelicula}
               td #{carteleras[i].id_cartelera}
+              td #{carteleras[i].id_sede}
+              td #{carteleras[i].id_censura}
               td
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
