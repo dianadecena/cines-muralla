@@ -11,7 +11,7 @@ controller.getProductosMasVendidosPorDiaSemana = async function (callback){
             " INNER JOIN `compras_comida` AS C ON F.`id_fact` = C.`id_fact`" +
             " INNER JOIN `comida` AS O ON C.`id_comida` = O.`id_comida`" +
             " INNER JOIN `dias_semana` AS D ON C.`id_dia` = D.`id_dia`" +
-            " GROUP BY D.`id_dia` ORDER BY COUNT(F.`id_fact`) DESC",
+            " GROUP BY D.`dia` ORDER BY COUNT(F.`id_fact`) DESC",
             {type: sequelize.QueryTypes.SELECT}
         );
 
