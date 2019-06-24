@@ -5,10 +5,7 @@ block content
    
   .row
     .col-6
-        ul
-                - for (let i = 0; i < funciones.length; i++)   
-                        li
-                        a(href=`taquilla/funcion/${funciones[i].id_funcion}`)  #{funciones[i].id_funcion}
+        
         form(action='/taquilla/create' method="POST")
             .form-group
                 label(for='cant_asientos') 

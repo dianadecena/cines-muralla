@@ -29,20 +29,30 @@ router.get('/', (req, res) => {
 
 
 router.get('/funcion/:id', (req, res) => {
-    console.log(req.params.id)
-    if(req.params.id){
-        salaController.getSala(req.params.id, (sala, err) => {
-            if(err){
-                res.json({
-                    success: false,
-                    msg: 'Fallo al buscar la sala'
-                })
-            }else{
-                res.render('taquillaS', {sala}) 
-            }
-        });
-    }
+    funcionController.getFunciones((funciones, err) => {
+        if (err){
+            res.json({
+                success: false,
+                msg: 'ERROR'
+            });
+        }else{
+            if(req.params.id){
+            salaController.getSala(req.params.id, (sala, err) => {
+                if(err){
+                    res.json({
+                        success: false,
+                        msg: 'Fallo al buscar la sala'
+                    })
+                }else{
+                    res.render('taquilla', {funciones, sala}) 
+                }
+            });
+        }
+        }    
+    });
 });
+    
+
 
 
 router.post('/create', (req, res) => {
