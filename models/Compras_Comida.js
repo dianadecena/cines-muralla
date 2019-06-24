@@ -11,7 +11,7 @@ const Compras_Comida = database.define('Compras_Comida', {
         validate: {
             notEmpty: false,
             isNumeric: true
-        }
+        },
 
         references: {
             model: Fact_Sales,
