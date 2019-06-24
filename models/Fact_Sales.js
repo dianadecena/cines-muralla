@@ -14,6 +14,8 @@ const Fact_Sales = database.define('Fact_Sales', {
     id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
+        autoIncrement: true,
 
         validate: {
             notEmpty: false,
