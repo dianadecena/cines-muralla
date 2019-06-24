@@ -101,6 +101,6 @@ router.get('/ver/sede/:id', (req, res) => {
     }
 });
 
-router.get('/salas/:id');
+
 
 module.exports = router;
