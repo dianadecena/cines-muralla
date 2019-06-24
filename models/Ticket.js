@@ -2,7 +2,7 @@ const sequelize = require('sequelize');
 const database = require('../config/database');
 
 const Ticket = database.define('Ticket', {
-    id_ticket: {
+    id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,

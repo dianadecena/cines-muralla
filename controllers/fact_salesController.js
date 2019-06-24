@@ -5,16 +5,17 @@ const Fact_Sales = require('../models/Fact_Sales');
 const controller = {}
 
 controller.getProductosMasVendidosPorDiaSemana = async function (callback){
-    try {
+    try{
         let productosVendidos = await database.query(
-            "SELECT COUNT(F.`id_cc`) AS cantidad, O.`nombre_comida`, D.`dia` FROM `fact_sales` AS F"+
-            "INNER JOIN `compras_comida` AS C ON F.`id_cc` = C.`id_cc`"+
-            "INNER JOIN `comida` AS O ON C.`id_comida` = O.`id_comida`"+
-            "INNER JOIN `dias_semana` AS D ON C.`id_dia` = D.`id_dia`"+
-            "GROUP BY C.`id_dia` ORDER BY COUNT(F.`id_cc`) DESC",
-            { type: sequelize.QueryTypes.SELECT}
+            "SELECT COUNT(F.`id_fact`) AS cantidad, O.`nombre_comida` AS nombre, D.`dia` AS dia FROM `fact_sales` AS F" +
+            " INNER JOIN `compras_comida` AS C ON F.`id_fact` = C.`id_fact`" +
+            " INNER JOIN `comida` AS O ON C.`id_comida` = O.`id_comida`" +
+            " INNER JOIN `dias_semana` AS D ON C.`id_dia` = D.`id_dia`" +
+            " GROUP BY D.`id_dia` ORDER BY COUNT(F.`id_fact`) DESC",
+            {type: sequelize.QueryTypes.SELECT}
         );
 
+        console.log(productosVendidos)
         productosVendidos = productosVendidos.map(result => result.dataValues);
         callback(productosVendidos, null);
     }catch (error) {

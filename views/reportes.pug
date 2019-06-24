@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+    - if (true && !productosVendidos) 
+        .row
+            .col-6
+                form(action='/reportes/ver/productos' method="GET")
+                    button#boton.agregar.bcartelera(type="submit") BUSCAR PRODUCTOS MÁS VENDIDOS POR DÍA DE SEMANA
+            .contenedor#contenedor
+                .col-6
+    - if (productosVendidos) 
+        .row
+            .col-6
+            .contenedor#contenedor
+                .col-6
+                table#carteleras
+                    thead
+                        tr
+                            th Cantidad
+                            th Nombre producto
+                            th Día
+                    tbody
+                    - for (var i = 0; i < productosVendidos.length; i++)
+                        tr
+                            td #{productosVendidos[i].cantidad}
+                            td #{productosVendidos[i].nombre}
+                            td #{productosVendidos[i].dia}

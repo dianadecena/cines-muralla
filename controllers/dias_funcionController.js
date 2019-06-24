@@ -4,6 +4,17 @@ const Dias_Funcion = require('../models/Dias_Funcion');
 
 const controller = {}
 
+controller.getDiasFuncion = async function (callback){
+    try {
+        let dias_funcion = await Dias_Funcion.findAll({
+        });
+        dias_funcion = dias_funcion.map(result => result.dataValues);
+        callback(dias_funcion, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
 controller.createDiasFuncion = async function (data, callback) {
     console.log(data);
     try {

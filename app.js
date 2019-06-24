@@ -25,6 +25,7 @@ const routeComida = require('./routes/comida');
 const routeGenero = require('./routes/genero');
 const routeSubtitulos = require('./routes/subtitulos');
 const routePeliculasC = require('./routes/peliculasc');
+const routeReportes = require('./routes/reportes');
 // Creamos La aplicacion en Express
 const app = express();
 
@@ -98,6 +99,7 @@ app.use('/comida', routeComida);
 app.use('/generos', routeGenero);
 app.use('/subtitulos', routeSubtitulos);
 app.use('/peliculasc', routePeliculasC);
+app.use('/reportes', routeReportes);
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);

@@ -12,23 +12,18 @@ html(lang="en")
 
     script.
       var cont_seats = 0;
-      function selectSeat(x, y) {
-        if(x.className === "seat" && cont_seats < 10 && y==0){
-          x.className = "reserv";
+      function selectSeat(x) {
+        if(x.className === "seat" && cont_seats < 10){
+          x.className = "selected";
           cont_seats++;
           var elem = document.getElementById('asientos');
           elem.value = cont_seats;
-        } else if(x.className === "selected" && y==1){
+        } else if(x.className === "selected"){
           x.className = "seat";
           cont_seats--;
           var elem = document.getElementById('asientos');
           elem.value = cont_seats;
-        } else if(x.className === "selected" && y==0){
-          x.className = "reserv";
-          cont_seats--;
-          var elem = document.getElementById('asientos');
-          elem.value = cont_seats;
-      }
+        } 
       }
 
   body

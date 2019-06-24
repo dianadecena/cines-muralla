@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Funcion = database.define('Funcion', {
-    id_funcion: {
+const Compras_Comida = database.define('Compras_Comida', {
+    id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
@@ -13,7 +13,7 @@ const Funcion = database.define('Funcion', {
             isNumeric: true
         }
     },
-    id_cartelera: {
+    id_comida: {
         type: sequelize.INTEGER,
         allowNull: false,
 
@@ -22,23 +22,7 @@ const Funcion = database.define('Funcion', {
             isNumeric: true
         }
     },
-    horario_inicio: {
-        type:  sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true
-        }
-    },
-    horario_final: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: false
-        }
-    },
-    id_sala: {
+    id_dia: {
         type: sequelize.INTEGER,
         allowNull: false,
 
@@ -52,4 +36,4 @@ const Funcion = database.define('Funcion', {
     freezeTableName: true
 });
 
-module.exports = Funcion;
+module.exports = Compras_Comida;
