@@ -5,6 +5,7 @@ const Fact_Sales = database.define('Fact_Sales', {
     id_sede: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,
@@ -14,7 +15,7 @@ const Fact_Sales = database.define('Fact_Sales', {
     id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
-        primaryKey:  true
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,
