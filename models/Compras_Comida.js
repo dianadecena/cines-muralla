@@ -11,13 +11,7 @@ const Compras_Comida = database.define('Compras_Comida', {
         validate: {
             notEmpty: false,
             isNumeric: true
-        },
-
-        references: {
-            model: Fact_Sales,
-            key: 'id_fact',
-            deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
-        }           
+        }
     },
     id_comida: {
         type: sequelize.INTEGER,
