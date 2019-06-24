@@ -11,16 +11,7 @@ const Fact_Sales = database.define('Fact_Sales', {
             isNumeric: true
         }
     },
-    id_cc: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
-    id_ticket: {
+    id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
 
