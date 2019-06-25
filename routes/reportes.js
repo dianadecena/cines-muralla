@@ -3,21 +3,21 @@ const router = express.Router();
 const fact_salesController = require('../controllers/fact_salesController');
 
 router.get('/', (req, res) => {
-    res.render('reportes')   
-});
-
-router.get('/ver/productos', (req, res) => {
-    fact_salesController.getProductosMasVendidosPorDiaSemana((productosVendidos, err) => {
+    fact_salesController.getVentasPeliculas((ventasPeliculas, err) => {
         if (err){
-            res.json({
-                success: false,
-                msg: 'ERROR'
-            });
+            res.json(ventasPeliculas);
         console.log(err)
         }else{
-            res.render('reportes', {productosVendidos})   
+            fact_salesController.getProductos((productos, err) => {
+                if (err){
+                    res.json(ventasPeliculas);
+                console.log(err)
+                }else{
+                    res.render('reportes', {ventasPeliculas, productos})   
+                }    
+            });
         }    
-    });
+    });  
 });
 
 

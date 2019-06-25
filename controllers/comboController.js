@@ -1,27 +1,25 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
-const Comida = require('../models/Comida');
+const Combo = require('../models/Combo');
 
 const controller = {}
 
-controller.getComida = async function (callback){
+controller.getCombos = async function (callback){
     try {
-        let comida = await Comida.findAll({
+        let combos = await Combo.findAll({
         });
-        comida = comida.map(result => result.dataValues);
-        console.log(comida);
-        callback(comida, null);
+        combos = combos.map(result => result.dataValues);
+        callback(combos, null);
     }catch (error) {
         callback(null, error);
     }
 }
 
-controller.createComida = async function (data, callback) {
+controller.createCombo = async function (data, callback) {
     console.log(data);
     try {
         let response = await Comida.create({
-            id_categoria: data.id_categoria,
-            nombre_comida: data.nombre_comida
+            nombre_combo: data.nombre_combo
         });
         
         callback(null);
@@ -30,11 +28,11 @@ controller.createComida = async function (data, callback) {
     }
 }
 
-controller.deleteComida = async function (id_comida, callback) {
+controller.deleteComida = async function (id_combo, callback) {
     try {
-        let response = await Comida.destroy({
+        let response = await Combo.destroy({
             where:{
-                id_comida
+                id_combo
             }
         });
         

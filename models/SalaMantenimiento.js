@@ -1,39 +1,50 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Fact_Sales = database.define('Fact_Sales', {
-    id_sede: {
+const SalaMantenimiento = database.define('mantenimiento_salas', {
+    id_ms: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
+        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    id_fact: {
+    id_sala: {
         type: sequelize.INTEGER,
         allowNull: false,
-        primaryKey:  true,
 
         validate: {
-            notEmpty: false,
+            notEmpty: true,
             isNumeric: true
         }
     },
-    fecha: {
-        type: sequelize.STRING,
+    horario_inicio: {
+        type: sequelize.TIME,
         allowNull: false,
 
         validate: {
             notEmpty: false,
-            isNumeric: true
+
         }
     },
-}, {
+    horario_fin: {
+        type: sequelize.TIME,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true,
+
+        }
+    }
+
+},{
     timestamps: false,
     freezeTableName: true
+
 });
 
-module.exports = Fact_Sales;
+module.exports = SalaMantenimiento; 

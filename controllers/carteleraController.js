@@ -28,7 +28,7 @@ controller.getCarteleras = async function (callback){
     }catch (error) {
         callback(null, error);
     }
-}
+} 
 
 controller.createCartelera = async function (data, callback) {
     console.log(data);

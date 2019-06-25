@@ -1,39 +1,40 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Fact_Sales = database.define('Fact_Sales', {
-    id_sede: {
+const Combo = database.define('Combo', {
+    id_combo: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
+        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    id_fact: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-        primaryKey:  true,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
-    fecha: {
+    nombre_combo: {
         type: sequelize.STRING,
         allowNull: false,
 
         validate: {
-            notEmpty: false,
+            notEmpty: true,
             isNumeric: true
         }
     },
-}, {
+    nombre_combo: {
+        type: sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true
+        }
+    },
+
+},{
     timestamps: false,
     freezeTableName: true
+
 });
 
-module.exports = Fact_Sales;
+module.exports = Combo;

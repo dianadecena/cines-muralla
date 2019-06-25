@@ -4,6 +4,17 @@ const Ticket = require('../models/Ticket');
 
 const controller = {}
 
+controller.getTickets = async function (callback){
+    try {
+        let tickets = await Ticket.findAll({
+        });
+        ticktes = tickets.map(result => result.dataValues);
+        callback(tickets, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
 controller.createTicket = async function (data, callback) {
     console.log(data);
     try {

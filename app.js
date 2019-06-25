@@ -18,7 +18,6 @@ const routeSede = require('./routes/sedes');
 const routeTaquilla = require('./routes/taquilla');
 const routeIdiomas = require('./routes/idiomas');
 const routeSalas = require('./routes/salas');
-const routeUser = require('./routes/register');
 const routeCarteleras = require('./routes/carteleras');
 const routeFunciones = require('./routes/funciones');
 const routeComida = require('./routes/comida');
@@ -26,6 +25,11 @@ const routeGenero = require('./routes/genero');
 const routeSubtitulos = require('./routes/subtitulos');
 const routePeliculasC = require('./routes/peliculasc');
 const routeReportes = require('./routes/reportes');
+const routeCompras = require('./routes/compras');
+const routeCombosComida = require('./routes/combos_comida');
+const routeMantenimientos = require('./routes/mantenimiento');
+const routeMapas = require('./routes/mapa_sala');
+const routeFacturas = require('./routes/facturas');
 // Creamos La aplicacion en Express
 const app = express();
 
@@ -92,7 +96,6 @@ app.use('/sedes', routeSede);
 app.use('/taquilla', routeTaquilla); 
 app.use('/idiomas', routeIdiomas); 
 app.use('/salas', routeSalas);
-app.use('/register', routeUser);
 app.use('/carteleras', routeCarteleras);
 app.use('/funciones', routeFunciones);
 app.use('/comida', routeComida);
@@ -100,6 +103,11 @@ app.use('/generos', routeGenero);
 app.use('/subtitulos', routeSubtitulos);
 app.use('/peliculasc', routePeliculasC);
 app.use('/reportes', routeReportes);
+app.use('/compras', routeCompras);
+app.use('/combosc', routeCombosComida);
+app.use('/mantenimiento', routeMantenimientos);
+app.use('/mapas', routeMapas);
+app.use('/facturas', routeFacturas);
 
 // Si no conseguimos el archivo le mandamos 404 al cliente
 app.use(errorHandlers.notFound);
