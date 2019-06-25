@@ -54,9 +54,10 @@ controller.createSala = async function (data, callback) {
         let response = await Sala.create({
             id_sede: data.id_sede,
             cant_asientos: data.cant_asientos,
+            id_tipo: data.id_tipo,
+            id_tr: data.id_tr,
             disponible: data.disponible,
-            tipo_repro: data.tipo_repro,
-            tipo_sala: data.tipo_sala
+            mapa_sala:data.mapa_sala
         });
         
         callback(null);
