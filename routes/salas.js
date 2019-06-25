@@ -5,6 +5,7 @@ const sedeController = require('../controllers/sedeController');
 const tipo_reproController = require('../controllers/tipo_reproController');
 const funcionController = require('../controllers/funcionController');
 
+
 router.get('/', (req, res) => {
     salaController.getSalas((salas, err) => {
         if (err){
@@ -44,7 +45,7 @@ router.post('/create', (req, res) => {
             if(err){
                 res.json({
                     success: false,
-                    msg: `Fallo al crear la película`
+                    msg: `Fallo al crear la sala`
                 })
             console.log(err);
             }else{
@@ -136,7 +137,7 @@ router.get('/ver/sede/:id', (req, res) => {
             if(err){
                 res.json({
                     success: false,
-                    msg: 'Fallo al buscar la película'
+                    msg: 'Fallo al buscar la sede'
                 })
             }else{
                 res.render('salas', {sede}) 
@@ -145,6 +146,6 @@ router.get('/ver/sede/:id', (req, res) => {
     }
 });
 
-router.get('/salas/:id');
+
 
 module.exports = router;

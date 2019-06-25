@@ -8,7 +8,7 @@ block content
         .nav
           ul
             li
-              a#ab(href="#") Salas en mantenimiento 
+              a#ab(href="/mantenimiento") Salas en mantenimiento 
             li
               a#ab(href="#") Mapa de la sala 
         form(action='/salas/create' method="POST")
@@ -46,6 +46,13 @@ block content
                 option(value="" selected) SELECCIONAR DISPONIBILIDAD
                   option(value=1) Disponible
                   option(value=0) No disponible
+          .form-group
+            label(for='mapa_sala') 
+            select#id_tipo.form-control.seleccions(type='select' name='mapa_sala' required).custom-select
+                option(value="" selected) SELECCIONAR MAPA
+                  option(value=1) Un pasillo 
+                  option(value=2) Dos pasillos
+                  option(value=3) Tres pasillos 
           button.agregar.bsala(type="submit") AGREGAR SALA
       .contenedor#contenedor
         .col-6
@@ -58,7 +65,11 @@ block content
               th Cantidad de asientos
               th Disponible
               th Tipo de Sala
+<<<<<<< HEAD
+              th Mapa
+=======
               th Tipo de Reproducción
+>>>>>>> 322cb715c13d8120332b211a6ebc1be074d1003e
               th Editar
               th Eliminar
           tbody

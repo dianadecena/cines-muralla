@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Sala = database.define('Sala', {
-    id_sala: {
+const SalaMantenimiento = database.define('mantenimiento_salas', {
+    id_ms: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
@@ -13,7 +13,7 @@ const Sala = database.define('Sala', {
             isNumeric: true
         }
     },
-    id_sede: {
+    id_sala: {
         type: sequelize.INTEGER,
         allowNull: false,
 
@@ -22,43 +22,29 @@ const Sala = database.define('Sala', {
             isNumeric: true
         }
     },
-    cant_asientos: {
-        type:  sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
-    disponible: {
-        type:  sequelize.BOOLEAN,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true
-        }
-    },
-    tipo_sala: {
-        type: sequelize.STRING,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true
-        }
-    },
-    mapa_sala: {
-        type: sequelize.INTEGER,
+    horario_inicio: {
+        type: sequelize.TIME,
         allowNull: false,
 
         validate: {
             notEmpty: false,
-            isNumeric: true
+            
         }
     },
-}, {
+    horario_fin: {
+        type: sequelize.TIME,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true,
+            
+        }
+    }
+
+},{
     timestamps: false,
     freezeTableName: true
+
 });
 
-module.exports = Sala;
+module.exports = SalaMantenimiento;

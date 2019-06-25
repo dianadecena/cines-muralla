@@ -48,6 +48,20 @@ controller.getFuncion = async function (id_funcion, callback){
     }
 }
 
+controller.getSalaDeFuncion = async function (data, callback){
+    try {
+        let SalaDeFuncion = await Funcion.findAll({
+            where: {
+                id_sala: data.id_sala
+            }
+        });
+        SalaDeFuncion = SalaDeFuncion.map(result => result.dataValues);
+        callback(SalaDeFuncion, null);
+    }catch (error) {
+        callback(null, error);
+    }
+}
+
 controller.updateSala = async function (data, id_funcion, callback) {
     try {
         let response = await Funcion.update({
