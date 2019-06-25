@@ -2,11 +2,10 @@ const sequelize = require('sequelize');
 const database = require('../config/database');
 
 const Tipo_Repro = database.define('Tipo_Repro', {
-    id_tr: {
+    id_sala: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
@@ -16,9 +15,10 @@ const Tipo_Repro = database.define('Tipo_Repro', {
     tipo_repro: {
         type: sequelize.STRING,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
-            notEmpty: true
+            notEmpty: false
         }
     },
 }, {

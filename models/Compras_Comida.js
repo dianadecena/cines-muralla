@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Genero = database.define('Genero', {
-    id_genero: {
+const Compras_Comida = database.define('Compras_Comida', {
+    id_fact: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
@@ -13,12 +13,22 @@ const Genero = database.define('Genero', {
             isNumeric: true
         }
     },
-    genero: {
-        type: sequelize.STRING,
+    id_comida: {
+        type: sequelize.INTEGER,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: true,
+            isNumeric: true
+        }
+    },
+    id_dia: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true,
+            isNumeric: true
         }
     },
 }, {
@@ -26,4 +36,4 @@ const Genero = database.define('Genero', {
     freezeTableName: true
 });
 
-module.exports = Genero;
+module.exports = Compras_Comida;

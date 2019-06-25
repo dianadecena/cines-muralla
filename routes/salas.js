@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const salaController = require('../controllers/salaController');
 const sedeController = require('../controllers/sedeController');
-const tipo_reproController = require('../controllers/sedeController');
+const tipo_reproController = require('../controllers/tipo_reproController');
+const funcionController = require('../controllers/funcionController');
 
 
 router.get('/', (req, res) => {
@@ -19,8 +20,18 @@ router.get('/', (req, res) => {
                         success: false,
                         msg: 'Fallo buscar modelos'
                     })
+                console.log(err)
                 }else{
-                    res.render('salas', {salas, sedes})
+                    tipo_reproController.getTiposRepro((tipos_repro, err) => {
+                        if(err){
+                            res.json({
+                                success: false,
+                                msg: 'Fallo buscar modelos'
+                            })
+                        }else{
+                            res.render('salas', {salas, sedes, tipos_repro})
+                        }
+                    })
                 }
             })
         }    
@@ -38,7 +49,17 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                res.redirect('/salas');
+                tipo_reproController.createTipoRepro(req.body, (err) => {
+                    if(err){
+                        res.json({
+                            success: false,
+                            msg: `Fallo al crear la película`
+                        })
+                    console.log(err);
+                    }else{
+                        res.redirect('/salas');
+                    }
+                })
             }
         })
     }
@@ -62,7 +83,16 @@ router.get('/:id', (req, res) => {
                             msg: 'Fallo buscar sedes'
                         })
                     }else{
-                        res.render('salas', {sala, sedes})
+                        tipo_reproController.getTiposRepro((tipos_repro, err) => {
+                            if(err){
+                                res.json({
+                                    success: false,
+                                    msg: 'Fallo buscar modelos'
+                                })
+                            }else{
+                                res.render('salas', {sala, sedes, tipos_repro})
+                            }
+                        })
                     }
                 })
             }
@@ -79,7 +109,22 @@ router.post('/update/:id', (req, res) => {
                     msg: `Fallo al modificar la película ${req.params.id}`
                 })
             }else{
-                res.redirect('/salas');
+                if(req.body.disponible == 0){
+                    funcionController.cambiarFunciones(req.params.id, (err) => {
+                        if(err){
+                            res.json({
+                                success: false,
+                                msg: `Fallo la sala de la función`
+                            })
+                            console.log(err)
+                        }
+                        else{
+                            res.redirect('/funciones');
+                        }
+                    })
+                }else{
+                    res.redirect('/salas');
+                }
             }
         })
     }

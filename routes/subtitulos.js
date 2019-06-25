@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const idioma_peliculaController = require('../controllers/idioma_peliculaController');
+const subtitulo_peliculaController = require('../controllers/subtitulo_peliculaController');
 const carteleraController = require('../controllers/carteleraController');
 
 router.get('/', (req, res) => {
-    idioma_peliculaController.getIdiomasPelicula((idiomas, err) => {
+    subtitulo_peliculaController.getSubtitulos((subtitulos, err) => {
         if (err){
             res.json({
                 success: false,
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
                     });
                 console.log(err)
                 }else{
-                    res.render('idiomas', {idiomas, carteleras})     
+                    res.render('subtitulos', {carteleras, subtitulos})     
                 }    
             });   
         }    
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     console.log(req.body);
     if(req.body){
-        idioma_peliculaController.createIdiomasPelicula( req.body, (err) => {
+        subtitulo_peliculaController.createSubtitulos( req.body, (err) => {
             if(err){
                 res.json({
                     success: false,
@@ -38,7 +38,7 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                res.redirect('/idiomas');
+                res.redirect('/subtitulos');
             }
         })
     }

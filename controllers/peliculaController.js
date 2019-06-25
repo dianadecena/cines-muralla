@@ -25,8 +25,7 @@ controller.createPelicula = async function (data, callback) {
             titulo: data.titulo,
             fecha_estreno: data.fecha_estreno,
             descripcion: data.descripcion,
-            duracion: data.duracion,
-            id_genero: data.id_genero
+            duracion: data.duracion
         });
         
         callback(null);
@@ -72,8 +71,7 @@ controller.updatePelicula = async function (data, id_pelicula, callback) {
             titulo: data.titulo,
             fecha_estreno: data.fecha_estreno,
             descripcion: data.descripcion,
-            duracion: data.duracion,
-            id_genero: data.id_genero
+            duracion: data.duracion
         },{
             where:{
                 id_pelicula

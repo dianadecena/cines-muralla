@@ -1,24 +1,25 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Idioma_Subtitulos = database.define('Idioma_Subtitulos', {
-    id_subtitulo: {
+const Cartelera_Pelicula = database.define('Cartelera_Pelicula', {
+    id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    idioma_sub: {
-        type:  sequelize.STRING,
+    id_pelicula: {
+        type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
-            notEmpty: true
+            notEmpty: false,
+            isNumeric: true
         }
     },
 }, {
@@ -26,4 +27,4 @@ const Idioma_Subtitulos = database.define('Idioma_Subtitulos', {
     freezeTableName: true
 });
 
-module.exports = Idioma_Subtitulos;
+module.exports = Cartelera_Pelicula;

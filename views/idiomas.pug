@@ -2,34 +2,46 @@ extends layout
 
 block content
 
-  - if (idiomas) 
+  - if (true) 
     .row
       .col-6
         .nav
+          ul
+            li
+              a#ab(href="/carteleras") Carteleras
         form(action='/idiomas/create' method="POST")
           .form-group
+            label(for='id_cartelera') 
+            select#seleccionf.form-control.seleccion.seleccionf(type='select' name='id_cartelera' required).custom-select
+                option(value="" selected) SELECCIONAR CARTELERA
+                - for (let i = 0; i < carteleras.length; i++)
+                  option(value=`${carteleras[i].id_cartelera}`) #{carteleras[i].id_cartelera}
+          .form-group
             label(for='idioma') 
-            input#titulo.form-control.idiomas(type='text' placeholder='idioma' name='idioma' required)
-          button#boton.agregar.bidiomas(type="submit") AGREGAR IDIOMA
+            select#ubicacion.form-control.seleccion(type='select' name='idioma' required).custom-select
+                option(value="" selected) SELECCIONAR IDIOMA
+                  option(value='Español') Español
+                  option(value='Inglés') Inglés
+                  option(value='Francés') Francés
+          button#boton.agregar.bcartelera(type="submit") AGREGAR IDIOMA
       .contenedor#contenedor
         .col-6
-        table#idiomas
+        table#carteleras
           thead
             tr
-              th ID
-              th Idioma 
+              th Cartelera
+              th Idioma
               th Editar
               th Eliminar
           tbody
           - for (var i = 0; i < idiomas.length; i++)
             tr
-              td #{idiomas[i].id_idioma}
+              td #{idiomas[i].id_cartelera}
               td #{idiomas[i].idioma}
               td
-                form(action=`/idiomas/${idiomas[i].id_idioma}`,method="GET")
                   button#editareliminar(type='submit')
                     i.far.fa-edit.fa-lg
               td 
-                form(action=`/idiomas/delete/${idiomas[i].id_idioma}`,method="POST")
                   button#editareliminar(type='submit')
                     i.fas.fa-trash-alt.fa-lg
+

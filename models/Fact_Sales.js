@@ -1,24 +1,34 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Idioma = database.define('Idioma', {
-    id_idioma: {
+const Fact_Sales = database.define('Fact_Sales', {
+    id_sede: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    idioma: {
-        type:  sequelize.STRING,
+    id_fact: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+        primaryKey:  true,
+
+        validate: {
+            notEmpty: false,
+            isNumeric: true
+        }
+    },
+    fecha: {
+        type: sequelize.DATE,
         allowNull: false,
 
         validate: {
-            notEmpty: true
+            notEmpty: false,
+            isNumeric: true
         }
     },
 }, {
@@ -26,4 +36,4 @@ const Idioma = database.define('Idioma', {
     freezeTableName: true
 });
 
-module.exports = Idioma;
+module.exports = Fact_Sales;

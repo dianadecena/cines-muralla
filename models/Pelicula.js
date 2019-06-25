@@ -46,15 +46,6 @@ const Pelicula = database.define('Pelicula', {
             isNumeric: true
         }
     },
-    id_genero: {
-        type:  sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
 }, {
     timestamps: false,
     freezeTableName: true

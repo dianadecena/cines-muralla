@@ -4,28 +4,24 @@ const Idioma_Pelicula = require('../models/Idioma_Pelicula');
 
 const controller = {}
 
-controller.getIdiomaPelicula = async function (callback){
+controller.getIdiomasPelicula = async function (callback){
     try {
-        let idiomaPelicula = await database.query(
-            "SELECT I.`idioma` FROM `cartelera` AS C"+
-            " INNER JOIN `idioma_pelicula` AS P ON C.`id_pelicula` = P.`id_pelicula`"+
-            " INNER JOIN `idioma` AS I ON P.`id_idioma` = I.`id_idioma`",
-            { type: sequelize.QueryTypes.SELECT}
-        );
-        
-        console.log(idiomaPelicula);
-        callback(idiomaPelicula, null);
+        let idiomas = await Idioma_Pelicula.findAll({
+        });
+        idiomas = idiomas.map(result => result.dataValues);
+        console.log(idiomas);
+        callback(idiomas, null);
     }catch (error) {
         callback(null, error);
     }
 }
 
-controller.createIdiomaPelicula = async function (data, callback) {
+controller.createIdiomasPelicula = async function (data, callback) {
     console.log(data);
     try {
         let response = await Idioma_Pelicula.create({
-            id_pelicula: data.id_pelicula,
-            id_idioma: data.id_idioma
+            id_cartelera: data.id_cartelera,
+            idioma: data.idioma
         });
         
         callback(null);

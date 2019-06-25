@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const idioma_peliculaController = require('../controllers/idioma_peliculaController');
+const cartelera_peliculaController = require('../controllers/cartelera_peliculaController');
 const carteleraController = require('../controllers/carteleraController');
+const peliculaController = require('../controllers/peliculaController');
 
 router.get('/', (req, res) => {
-    idioma_peliculaController.getIdiomasPelicula((idiomas, err) => {
+    cartelera_peliculaController.getPeliculasC((peliculasc, err) => {
         if (err){
             res.json({
                 success: false,
@@ -20,7 +21,17 @@ router.get('/', (req, res) => {
                     });
                 console.log(err)
                 }else{
-                    res.render('idiomas', {idiomas, carteleras})     
+                    peliculaController.getPeliculas((peliculas, err) => {
+                        if (err){
+                            res.json({
+                                success: false,
+                                msg: 'ERROR'
+                            });
+                        console.log(err)
+                        }else{
+                            res.render('peliculas_cartelera', {peliculasc, carteleras, peliculas})     
+                        }    
+                    });   
                 }    
             });   
         }    
@@ -30,7 +41,7 @@ router.get('/', (req, res) => {
 router.post('/create', (req, res) => {
     console.log(req.body);
     if(req.body){
-        idioma_peliculaController.createIdiomasPelicula( req.body, (err) => {
+        cartelera_peliculaController.createPeliculasC( req.body, (err) => {
             if(err){
                 res.json({
                     success: false,
@@ -38,7 +49,7 @@ router.post('/create', (req, res) => {
                 })
             console.log(err);
             }else{
-                res.redirect('/idiomas');
+                res.redirect('/peliculasc');
             }
         })
     }

@@ -5,6 +5,10 @@ block content
   - if (funciones) 
     .row
       .col-6
+        .nav
+          ul
+            li
+              a#ab(href="/generos") Días funciones
         form(action='/funciones/create' method="POST")
           .form-group
             label(for='id_cartelera') 
@@ -47,7 +51,6 @@ block content
             tr
               th ID
               th Cartelera
-              th Día
               th Horario inicio
               th Horario final
               th Sala
@@ -58,7 +61,6 @@ block content
             tr
               td #{funciones[i].id_funcion}
               td #{funciones[i].id_cartelera}
-              td #{funciones[i].id_dia}
               td #{funciones[i].horario_inicio}
               td #{funciones[i].horario_final}
               td #{funciones[i].id_sala}
@@ -112,7 +114,6 @@ block content
             tr
               th ID
               th Cartelera
-              th Día
               th Horario inicio
               th Horario final
               th Sala
@@ -121,7 +122,6 @@ block content
             tr
               td #{funcion[i].id_funcion}
               td #{funcion[i].id_cartelera}
-              td #{funcion[i].id_dia}
               td #{funcion[i].horario_inicio}
               td #{funcion[i].horario_final}
               td #{funcion[i].id_sala}

@@ -1,22 +1,25 @@
 const sequelize = require('sequelize');
 const database = require('../config/database');
 
-const Tipo_Sala = database.define('Tipo_Sala', {
-    id_tipo: {
+const Dias_Funcion = database.define('Dias_Funcion', {
+    id_dia: {
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
         }
     },
-    id_sala: {
-        type: sequelize.STRING,
+    id_funcion: {
+        type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey:  true,
 
         validate: {
-            notEmpty: true
+            notEmpty: false,
+            isNumeric: true
         }
     },
 }, {
@@ -24,4 +27,4 @@ const Tipo_Sala = database.define('Tipo_Sala', {
     freezeTableName: true
 });
 
-module.exports = Tipo_Sala;
+module.exports = Dias_Funcion;

@@ -22,15 +22,6 @@ const Funcion = database.define('Funcion', {
             isNumeric: true
         }
     },
-    id_dia: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: true,
-            isNumeric: true
-        }
-    },
     horario_inicio: {
         type:  sequelize.INTEGER,
         allowNull: false,

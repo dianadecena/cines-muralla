@@ -2,33 +2,23 @@ const sequelize = require('sequelize');
 const database = require('../config/database');
 
 const Subtitulo_Pelicula = database.define('Subtitulo_Pelicula', {
-    id_subtitulo: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
-    id_pelicula: {
-        type: sequelize.INTEGER,
-        allowNull: false,
-
-        validate: {
-            notEmpty: false,
-            isNumeric: true
-        }
-    },
-    id_subtitulop: {
+    id_cartelera: {
         type: sequelize.INTEGER,
         allowNull: false,
         primaryKey:  true,
-        autoIncrement: true,
 
         validate: {
             notEmpty: false,
             isNumeric: true
+        }
+    },
+    subtitulos: {
+        type: sequelize.STRING,
+        allowNull: false,
+        primaryKey:  true,
+
+        validate: {
+            notEmpty: false
         }
     },
 }, {
